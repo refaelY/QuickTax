@@ -1,0 +1,394 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		989FD02B2A7624D100C990E8 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 989FD02A2A7624D100C990E8 /* main.cpp */; };
+		989FD0482A7632E100C990E8 /* Server.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 989FD0472A7632E100C990E8 /* Server.cpp */; };
+		989FD04E2A76373A00C990E8 /* Communicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 989FD0492A76373A00C990E8 /* Communicator.cpp */; };
+		989FD04F2A76373A00C990E8 /* JsonRequestPacketDeserializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 989FD04A2A76373A00C990E8 /* JsonRequestPacketDeserializer.cpp */; };
+		989FD0502A76373A00C990E8 /* JsonResponsePacketSerializer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 989FD04B2A76373A00C990E8 /* JsonResponsePacketSerializer.cpp */; };
+		989FD0512A76373A00C990E8 /* IRequestHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 989FD04C2A76373A00C990E8 /* IRequestHandler.cpp */; };
+		989FD0522A76373A00C990E8 /* IDataBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 989FD04D2A76373A00C990E8 /* IDataBase.cpp */; };
+		989FD0542A763EF800C990E8 /* sqlite3.c in Sources */ = {isa = PBXBuildFile; fileRef = 989FD0532A763EF800C990E8 /* sqlite3.c */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		989FD0252A7624D100C990E8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		989FD0272A7624D100C990E8 /* QuickTax-server */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "QuickTax-server"; sourceTree = BUILT_PRODUCTS_DIR; };
+		989FD02A2A7624D100C990E8 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		989FD0332A76275000C990E8 /* IRequestHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IRequestHandler.h; sourceTree = "<group>"; };
+		989FD0342A76275000C990E8 /* JsonResponsePacketSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonResponsePacketSerializer.h; sourceTree = "<group>"; };
+		989FD0352A76275000C990E8 /* RequestStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestStruct.h; sourceTree = "<group>"; };
+		989FD0362A76275000C990E8 /* IDataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDataBase.h; sourceTree = "<group>"; };
+		989FD0372A76275000C990E8 /* sqlite3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sqlite3.h; sourceTree = "<group>"; };
+		989FD0382A76275000C990E8 /* ResponseStruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResponseStruct.h; sourceTree = "<group>"; };
+		989FD0392A76275000C990E8 /* Communicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Communicator.h; sourceTree = "<group>"; };
+		989FD03A2A76275000C990E8 /* JsonRequestPacketDeserializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonRequestPacketDeserializer.h; sourceTree = "<group>"; };
+		989FD03B2A76275000C990E8 /* Server.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Server.h; sourceTree = "<group>"; };
+		989FD03C2A76275000C990E8 /* WSAInitializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WSAInitializer.h; sourceTree = "<group>"; };
+		989FD03F2A76304500C990E8 /* nlohmann.json.3.11.2.nupkg */ = {isa = PBXFileReference; lastKnownFileType = file; path = nlohmann.json.3.11.2.nupkg; sourceTree = "<group>"; };
+		989FD0402A76304500C990E8 /* .signature.p7s */ = {isa = PBXFileReference; lastKnownFileType = file; path = .signature.p7s; sourceTree = "<group>"; };
+		989FD0432A76304500C990E8 /* nlohmann.json.targets */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = nlohmann.json.targets; sourceTree = "<group>"; };
+		989FD0462A76304500C990E8 /* json.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = json.hpp; path = nlohmann.json.3.11.2/build/native/include/nlohmann/json.hpp; sourceTree = "<group>"; };
+		989FD0472A7632E100C990E8 /* Server.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Server.cpp; sourceTree = "<group>"; };
+		989FD0492A76373A00C990E8 /* Communicator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Communicator.cpp; sourceTree = "<group>"; };
+		989FD04A2A76373A00C990E8 /* JsonRequestPacketDeserializer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonRequestPacketDeserializer.cpp; sourceTree = "<group>"; };
+		989FD04B2A76373A00C990E8 /* JsonResponsePacketSerializer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = JsonResponsePacketSerializer.cpp; sourceTree = "<group>"; };
+		989FD04C2A76373A00C990E8 /* IRequestHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IRequestHandler.cpp; sourceTree = "<group>"; };
+		989FD04D2A76373A00C990E8 /* IDataBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IDataBase.cpp; sourceTree = "<group>"; };
+		989FD0532A763EF800C990E8 /* sqlite3.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sqlite3.c; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		989FD0242A7624D100C990E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		989FD01E2A7624D100C990E8 = {
+			isa = PBXGroup;
+			children = (
+				989FD0292A7624D100C990E8 /* QuickTax-server */,
+				989FD0282A7624D100C990E8 /* Products */,
+				989FD03D2A7627C100C990E8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		989FD0282A7624D100C990E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				989FD0272A7624D100C990E8 /* QuickTax-server */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		989FD0292A7624D100C990E8 /* QuickTax-server */ = {
+			isa = PBXGroup;
+			children = (
+				989FD0322A76275000C990E8 /* HeaderFiles */,
+				989FD02A2A7624D100C990E8 /* main.cpp */,
+				989FD0492A76373A00C990E8 /* Communicator.cpp */,
+				989FD04D2A76373A00C990E8 /* IDataBase.cpp */,
+				989FD04C2A76373A00C990E8 /* IRequestHandler.cpp */,
+				989FD04A2A76373A00C990E8 /* JsonRequestPacketDeserializer.cpp */,
+				989FD04B2A76373A00C990E8 /* JsonResponsePacketSerializer.cpp */,
+				989FD0472A7632E100C990E8 /* Server.cpp */,
+				989FD0532A763EF800C990E8 /* sqlite3.c */,
+			);
+			path = "QuickTax-server";
+			sourceTree = "<group>";
+		};
+		989FD0322A76275000C990E8 /* HeaderFiles */ = {
+			isa = PBXGroup;
+			children = (
+				989FD03E2A76304500C990E8 /* nlohmann.json.3.11.2 */,
+				989FD0332A76275000C990E8 /* IRequestHandler.h */,
+				989FD0462A76304500C990E8 /* json.hpp */,
+				989FD0342A76275000C990E8 /* JsonResponsePacketSerializer.h */,
+				989FD0352A76275000C990E8 /* RequestStruct.h */,
+				989FD0362A76275000C990E8 /* IDataBase.h */,
+				989FD0372A76275000C990E8 /* sqlite3.h */,
+				989FD0382A76275000C990E8 /* ResponseStruct.h */,
+				989FD0392A76275000C990E8 /* Communicator.h */,
+				989FD03A2A76275000C990E8 /* JsonRequestPacketDeserializer.h */,
+				989FD03B2A76275000C990E8 /* Server.h */,
+				989FD03C2A76275000C990E8 /* WSAInitializer.h */,
+			);
+			path = HeaderFiles;
+			sourceTree = "<group>";
+		};
+		989FD03D2A7627C100C990E8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		989FD03E2A76304500C990E8 /* nlohmann.json.3.11.2 */ = {
+			isa = PBXGroup;
+			children = (
+				989FD03F2A76304500C990E8 /* nlohmann.json.3.11.2.nupkg */,
+				989FD0402A76304500C990E8 /* .signature.p7s */,
+				989FD0412A76304500C990E8 /* build */,
+			);
+			path = nlohmann.json.3.11.2;
+			sourceTree = "<group>";
+		};
+		989FD0412A76304500C990E8 /* build */ = {
+			isa = PBXGroup;
+			children = (
+				989FD0422A76304500C990E8 /* native */,
+			);
+			path = build;
+			sourceTree = "<group>";
+		};
+		989FD0422A76304500C990E8 /* native */ = {
+			isa = PBXGroup;
+			children = (
+				989FD0432A76304500C990E8 /* nlohmann.json.targets */,
+				989FD0442A76304500C990E8 /* include */,
+			);
+			path = native;
+			sourceTree = "<group>";
+		};
+		989FD0442A76304500C990E8 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				989FD0452A76304500C990E8 /* nlohmann */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		989FD0452A76304500C990E8 /* nlohmann */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = nlohmann;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		989FD0262A7624D100C990E8 /* QuickTax-server */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 989FD02E2A7624D100C990E8 /* Build configuration list for PBXNativeTarget "QuickTax-server" */;
+			buildPhases = (
+				989FD0232A7624D100C990E8 /* Sources */,
+				989FD0242A7624D100C990E8 /* Frameworks */,
+				989FD0252A7624D100C990E8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "QuickTax-server";
+			productName = "QuickTax-server";
+			productReference = 989FD0272A7624D100C990E8 /* QuickTax-server */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		989FD01F2A7624D100C990E8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					989FD0262A7624D100C990E8 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 989FD0222A7624D100C990E8 /* Build configuration list for PBXProject "QuickTax-server" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 989FD01E2A7624D100C990E8;
+			productRefGroup = 989FD0282A7624D100C990E8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				989FD0262A7624D100C990E8 /* QuickTax-server */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		989FD0232A7624D100C990E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				989FD04F2A76373A00C990E8 /* JsonRequestPacketDeserializer.cpp in Sources */,
+				989FD0482A7632E100C990E8 /* Server.cpp in Sources */,
+				989FD0512A76373A00C990E8 /* IRequestHandler.cpp in Sources */,
+				989FD0502A76373A00C990E8 /* JsonResponsePacketSerializer.cpp in Sources */,
+				989FD0522A76373A00C990E8 /* IDataBase.cpp in Sources */,
+				989FD04E2A76373A00C990E8 /* Communicator.cpp in Sources */,
+				989FD02B2A7624D100C990E8 /* main.cpp in Sources */,
+				989FD0542A763EF800C990E8 /* sqlite3.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		989FD02C2A7624D100C990E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		989FD02D2A7624D100C990E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		989FD02F2A7624D100C990E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MML747FDC6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		989FD0302A7624D100C990E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = MML747FDC6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		989FD0222A7624D100C990E8 /* Build configuration list for PBXProject "QuickTax-server" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				989FD02C2A7624D100C990E8 /* Debug */,
+				989FD02D2A7624D100C990E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		989FD02E2A7624D100C990E8 /* Build configuration list for PBXNativeTarget "QuickTax-server" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				989FD02F2A7624D100C990E8 /* Debug */,
+				989FD0302A7624D100C990E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 989FD01F2A7624D100C990E8 /* Project object */;
+}
