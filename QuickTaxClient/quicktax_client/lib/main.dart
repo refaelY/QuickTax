@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'signup.dart';
 import 'menu.dart';
-
+import 'user_type.dart';
 
 void main() {
   runApp(QuickTax());
@@ -75,10 +75,10 @@ class LoginPage extends StatelessWidget {
                     onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MenuPage(userType: UserType.Manager)),
+                      MaterialPageRoute(builder: (context) => MenuPage(userType: UserType.Employee)),
                     );
                   },
-                  child: Text('Sign up'),
+                  child: Text('Login'),
                   ),
                   SizedBox(height: 8),
                   // Signup Button
