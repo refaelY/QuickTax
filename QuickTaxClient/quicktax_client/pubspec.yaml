@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
   camera: ^0.10.0
   image_picker: ^1.0.1
+  flutter_tesseract_ocr: ^0.4.23
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -41,6 +42,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -67,6 +69,8 @@ flutter:
     - assets/images/logo.png
     - assets/icons/icon.png
     - assets/images/receipt.jpeg
+    - assets/
+    - assets/tessdata/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
