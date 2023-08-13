@@ -1,11 +1,36 @@
 import 'package:flutter/material.dart';
+import 'camera.dart';
+import 'profile_setting.dart';
+import 'receipt_history.dart';
+import 'add_employee.dart';
+import 'user_type.dart';
 
-enum UserType { Employee, Manager }
 
-class MenuPage extends StatelessWidget {
+class MenuPage extends StatefulWidget {
   final UserType userType;
 
   MenuPage({required this.userType});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _MenuPageState createState() => _MenuPageState();
+}
+
+class _MenuPageState extends State<MenuPage> {
+  int _currentIndex = 0;
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: _currentIndex);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -14,66 +39,139 @@ class MenuPage extends StatelessWidget {
         children: [
           // Background Image
           Image.asset(
-            'assets/images/background.jpg', // Replace with your background image path
+            'assets/images/background2.jpg', 
             fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,
           ),
-          // Logo at the Top
-          Positioned(
-            top: 32,
-            left: 16,
-            right: 16,
-            child: Image.asset(
-              'assets/images/logo.png', // Replace with your logo image path
-              height: 100, // Adjust height as needed
+          // Transparent Logo at the Center
+          Center(
+            child: Opacity(
+              opacity: 0.6, // Set the desired transparency value here (0.0 to 1.0)
+              child: Image.asset(
+                'assets/images/logo.png', // Replace with your logo image path
+                height: 200, // Adjust the height as needed
+              ),
             ),
           ),
-          // Buttons and Widgets
-          Positioned(
-            bottom: 32,
-            left: 16,
-            right: 16,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+          // Rest of the Content
+          Positioned.fill(
+            child: PageView(
+              controller: _pageController,
+              onPageChanged: (index) {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle scan photo button press
-                    // Add your scan photo logic here
+                // Replace the PlaceholderWidgets with your actual screens/pages for each button action
+                PlaceholderWidget(
+                  'Receipt History',
+                  Icons.history,
+                  () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ReceiptHistoryScreen(userType: widget.userType),
+                      ),
+                    );
                   },
-                  child: Text('Scan Photo'),
                 ),
-                SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle receipt history button press
-                    // Add your receipt history logic here
+                PlaceholderWidget(
+                  'Scan',
+                  Icons.camera_alt,
+                  () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ScanScreen(userType: widget.userType),
+                      ),
+                    );
                   },
-                  child: Text('Receipt History'),
                 ),
-                SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle profile settings button press
-                    // Add your profile settings logic here
+                PlaceholderWidget(
+                  'Profile Settings',
+                  Icons.settings,
+                  () {
+                    // Handle navigation here for Profile Settings
                   },
-                  child: Text('Profile Settings'),
                 ),
-                if (userType == UserType.Manager) ...[
-                  SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () {
-                      // Handle add employee button press
-                      // Add your add employee logic here
+                if (widget.userType == UserType.Manager)
+                  PlaceholderWidget(
+                    'Additional User',
+                    Icons.person_add,
+                    () {
+                      // Handle navigation here for Additional User (Manager only)
                     },
-                    child: Text('Add Employee'),
                   ),
-                ],
+              ],
+            ),
+          ),
+          // Bottom Navigation Bar
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: BottomNavigationBar(
+              currentIndex: _currentIndex,
+              onTap: (index) {
+                setState(() {
+                  _currentIndex = index;
+                  _pageController.animateToPage(
+                    _currentIndex,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                });
+              },
+              items: [
+                const BottomNavigationBarItem(
+                  icon: Icon(Icons.history),
+                  label: 'Receipt History',
+                ),
+                const BottomNavigationBarItem(
+                  icon: Icon(Icons.camera_alt),
+                  label: 'Scan',
+                ),
+                const BottomNavigationBarItem(
+                  icon: Icon(Icons.settings),
+                  label: 'Profile Settings',
+                ),
+                if (widget.userType == UserType.Manager)
+                  const BottomNavigationBarItem(
+                    icon: Icon(Icons.person_add),
+                    label: 'Additional User',
+                  ),
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+
+class PlaceholderWidget extends StatelessWidget {
+  final String title;
+  final IconData icon;
+  final VoidCallback onPressed; // Added this callback parameter
+
+  PlaceholderWidget(this.title, this.icon, this.onPressed); // Updated constructor
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector( // Wrap with GestureDetector to handle tap
+      onTap: onPressed, // Call the provided onPressed function when tapped
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 60),
+            const SizedBox(height: 16),
+            Text(title, style: const TextStyle(fontSize: 18)),
+          ],
+        ),
       ),
     );
   }

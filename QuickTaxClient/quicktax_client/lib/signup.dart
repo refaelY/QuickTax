@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'menu.dart';
+import 'user_type.dart';
 
 class SignupPage extends StatelessWidget {
   @override
@@ -86,7 +87,7 @@ class SignupPage extends StatelessWidget {
                       onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => MenuPage(userType: UserType.Employee)),
+                      MaterialPageRoute(builder: (context) => MenuPage(userType: UserType.Manager)),
                     );
                   },
                     child: Text('Sign up'),
