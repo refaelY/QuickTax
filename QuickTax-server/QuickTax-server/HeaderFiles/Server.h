@@ -1,6 +1,6 @@
 #pragma once
 #include "Communicator.h"
-#include "IDatabase.h"
+#include "IDataBase.h"
 
 #ifdef _WIN32
     #include <WinSock2.h>
