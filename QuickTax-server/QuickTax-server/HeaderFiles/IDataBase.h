@@ -1,4 +1,7 @@
 #pragma once
+#ifndef IDATABASE_H
+#define IDATABASE_H
+
 #include <list>
 #include <map>
 #include "RequestStruct.h"
@@ -10,7 +13,6 @@
 #include <string.h>
 #include <string>
 #include "sqlite3.h"
-
 using namespace std;
 
 class IDataBase
@@ -52,3 +54,4 @@ public:
 
 };
 
+#endif
