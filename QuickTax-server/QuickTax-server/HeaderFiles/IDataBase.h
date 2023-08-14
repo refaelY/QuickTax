@@ -2,6 +2,18 @@
 #ifndef IDATABASE_H
 #define IDATABASE_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "sqlite3.h"
+
+#ifdef __cplusplus
+}
+#endif
+
+
+
 #include <list>
 #include <map>
 #include "RequestStruct.h"
@@ -12,7 +24,7 @@
 //#include <io.h>
 #include <string.h>
 #include <string>
-#include "sqlite3.h"
+
 using namespace std;
 
 class IDataBase
