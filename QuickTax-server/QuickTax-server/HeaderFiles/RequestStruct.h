@@ -30,7 +30,7 @@ enum RequestCode
 struct Employee
 {
 	int _userId;
-	std::string _userName;
+	std::string _username;
 	std::string _storeName;
 	std::list<Receipt> _receipts;
 };
@@ -53,7 +53,7 @@ struct BusinessRegistrationRequest
 {
 	int _businessId;
 	std::string _name;
-	std::string _userName;
+	std::string _username;
 	std::string _password;
 	std::string _registrationDate;
 
@@ -66,7 +66,7 @@ struct UploadReceiptRequest
 
 struct AddEmployeeRequest
 {
-	std::string _userName;
+	std::string _username;
 	std::string _password;
 	int _businessId;
 };

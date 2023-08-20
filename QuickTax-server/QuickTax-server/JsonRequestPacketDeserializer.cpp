@@ -21,7 +21,7 @@ BusinessRegistrationRequest JsonRequestPacketDeserializer::deserializeBusinessRe
 	signup._name = j.at(NAME).get<std::string>();
 	signup._password = j.at(PASSWORD).get<std::string>();
 	signup._registrationDate = j.at(REGISTRATIONDATE).get<std::string>();
-	signup._userName = j.at(USERNAME).get<std::string>();
+	signup._username = j.at(USERNAME).get<std::string>();
 
 	return signup;
 }
@@ -31,7 +31,7 @@ AddEmployeeRequest JsonRequestPacketDeserializer::deserializeAddEmployeeRequest(
 	AddEmployeeRequest addEmployee;
 	json j = json::parse(buffer);
 
-	addEmployee._userName = j.at(USERNAME).get<std::string>();
+	addEmployee._username = j.at(USERNAME).get<std::string>();
 	addEmployee._password = j.at(PASSWORD).get<std::string>();
 	addEmployee._businessId = j.at(BUSINESSID).get<int>();
 

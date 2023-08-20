@@ -21,7 +21,7 @@ int IDataBase::getUserId(std::string username, std::string password) {
 }
 
 std::string IDataBase::getBusinessName(int userId) {
-    std::string sqlStatement = "SELECT businessName FROM Business WHERE id = " + std::to_string(userId) + ";";
+    std::string sqlStatement = "SELECT name FROM Business WHERE id = " + std::to_string(userId) + ";";
     char* errMessage = nullptr;
     std::string businessName = "";
 
@@ -41,10 +41,10 @@ bool IDataBase::doesUserExists(LoginRequest loginRequest) {
     int res;
     bool ans = false;
 
-    sqlStatement = "SELECT COUNT(NAME) from EMPLOYEE where NAME = \"" + loginRequest._username + "\" AND PASSWORD = \"" + loginRequest._password + "\"; ";
+    sqlStatement = "SELECT COUNT(USERNAME) from EMPLOYEE where USERNAME = \"" + loginRequest._username + "\" AND PASSWORD = \"" + loginRequest._password + "\"; ";
     res = sqlite3_exec(db, sqlStatement.c_str(), doesItemExistsCallback, static_cast<void*>(&ans), &errMessage);
     if (res != SQLITE_OK) {
-        cout << "user is already exists" << endl;
+        cout << "user is not exists" << endl;
     }
 
     return ans;
@@ -56,11 +56,11 @@ bool IDataBase::doesUserDirector(LoginRequest loginRequest) {
     int res;
     bool ans = false;
 
-    sqlStatement = "SELECT COUNT(NAME) from BUSSINES where NAME = \"" + loginRequest._username + "\" AND PASSWORD = \"" + loginRequest._password + "\"; ";
+    sqlStatement = "SELECT COUNT(USERNAME) from BUSINESS where USERNAME = \"" + loginRequest._username + "\" AND PASSWORD = \"" + loginRequest._password + "\"; ";
     res = sqlite3_exec(db, sqlStatement.c_str(), doesItemExistsCallback, static_cast<void*>(&ans), &errMessage);
 
     if (res != SQLITE_OK) {
-        cout << "user is director" << endl;
+        cout << "user is not director" << endl;
     }
 
     return ans;
@@ -87,8 +87,8 @@ void IDataBase::createBusiness(BusinessRegistrationRequest request) {
     std::string sqlStatement;
     char* errMessage = nullptr;
     int res;
-    if (!doesUsernameExists(request._userName)) {
-        sqlStatement = "INSERT INTO BUSINESS (ID, NAME, REGISTRATIONDATE, USERNAME, PASSWORD) VALUES(\"" + std::to_string(request._businessId) + "\",\"" + request._name + "\",\"" + request._registrationDate + "\",\"" + request._userName + "\",\"" + request._password + "\");";
+    if (!doesUsernameExists(request._username)) {
+        sqlStatement = "INSERT INTO BUSINESS (ID, NAME, REGISTRATIONDATE, USERNAME, PASSWORD) VALUES(\"" + std::to_string(request._businessId) + "\",\"" + request._name + "\",\"" + request._registrationDate + "\",\"" + request._username + "\",\"" + request._password + "\");";
         res = sqlite3_exec(db, sqlStatement.c_str(), nullptr, nullptr, &errMessage);
         if (res != SQLITE_OK) {
             cout << "error insert into Business" << endl;
@@ -105,8 +105,8 @@ void IDataBase::addEmployee(AddEmployeeRequest request) {
     std::string sqlStatement;
     char* errMessage = nullptr;
     int res;
-    if (!doesUsernameExists(request._userName)) {
-        sqlStatement = "INSERT INTO EMPLOYEE (BUSINESSID, USERNAME, PASSWORD) VALUES(\"" + std::to_string(request._businessId) + "\",\"" + request._userName + "\",\"" + request._password + "\");";
+    if (!doesUsernameExists(request._username)) {
+        sqlStatement = "INSERT INTO EMPLOYEE (BUSINESSID, USERNAME, PASSWORD) VALUES(\"" + std::to_string(request._businessId) + "\",\"" + request._username + "\",\"" + request._password + "\");";
         res = sqlite3_exec(db, sqlStatement.c_str(), nullptr, nullptr, &errMessage);
         if (res != SQLITE_OK) {
             cout << "error insert into Employee" << endl;
@@ -163,7 +163,7 @@ bool IDataBase::open() {
     }
 
     if (file_exist != 0) {
-        sqlStatement = "CREATE TABLE IF NOT EXISTS Business (id INTEGER, name TEXT, registrationDate TEXT, username TEXT, password TEXT, PRIMARY KEY(id))";
+        sqlStatement = "CREATE TABLE IF NOT EXISTS BUSINESS (ID INTEGER, NAME TEXT, registrationDate TEXT, USERNAME TEXT, PASSWORD TEXT, PRIMARY KEY(ID))";
         char* errMessage = nullptr;
         res = sqlite3_exec(db, sqlStatement.c_str(), nullptr, nullptr, &errMessage);
         if (res != SQLITE_OK) {
@@ -172,7 +172,7 @@ bool IDataBase::open() {
             return false;
         }
 
-        sqlStatement = "CREATE TABLE IF NOT EXISTS Employee (id INTEGER, businessId INTEGER, username TEXT, password TEXT, PRIMARY KEY(id))";
+        sqlStatement = "CREATE TABLE IF NOT EXISTS EMPLOYEE (ID INTEGER, BUSINESSID INTEGER, USERNAME TEXT, PASSWORD TEXT, PRIMARY KEY(ID))";
         errMessage = nullptr;
         res = sqlite3_exec(db, sqlStatement.c_str(), nullptr, nullptr, &errMessage);
         if (res != SQLITE_OK) {
@@ -180,7 +180,7 @@ bool IDataBase::open() {
             return false;
         }
 
-        sqlStatement = "CREATE TABLE IF NOT EXISTS Receipt (id INTEGER, amount INTEGER, date TEXT, employeeId INTEGER, PRIMARY KEY(id))";
+        sqlStatement = "CREATE TABLE IF NOT EXISTS Receipt (ID INTEGER, AMOUNT INTEGER, DATE TEXT, EMPLOYEEID INTEGER, IMG, TEXT, PRIMARY KEY(ID))";
         errMessage = nullptr;
         res = sqlite3_exec(db, sqlStatement.c_str(), nullptr, nullptr, &errMessage);
         if (res != SQLITE_OK) {

@@ -44,7 +44,6 @@ void Communicator::handleRequests(SocketType clientSocket)
 	{
 		//************Get data from client*************
 		request = getData(clientSocket);
-		printf("fff");
 		try
 		{
 			switch (request._code)

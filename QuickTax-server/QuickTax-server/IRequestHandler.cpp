@@ -18,7 +18,9 @@ RequestResult IRequestHandler::login(Request request, SocketType socket)
 	if (!_m_database.doesUserExists(loginRequest))
 	{
 		if (!_m_database.doesUserDirector(loginRequest))
-			throw std::invalid_argument(ERROR_USER_NOT_EXISTS);
+        {
+            throw std::invalid_argument(ERROR_USER_NOT_EXISTS);
+        }
 		else
 			response._status = DIRECTOR;
 	}
@@ -41,14 +43,14 @@ RequestResult IRequestHandler::businessRegistration(Request request, SocketType 
 
 	BusinessRegistrationRequest businessRegistrationRequest = JsonRequestPacketDeserializer::deserializeBusinessRegistrationRequest(request._buffer);
 
-	if (!_m_database.doesUsernameExists(businessRegistrationRequest._userName))
+	if (_m_database.doesUsernameExists(businessRegistrationRequest._username))
 	{
 		throw std::invalid_argument(ERROR_USER_EXISTS);
 	}
 	else
 		_m_database.createBusiness(businessRegistrationRequest);
 
-	response._userId = _m_database.getUserId(businessRegistrationRequest._userName, businessRegistrationRequest._password);
+	response._userId = _m_database.getUserId(businessRegistrationRequest._username, businessRegistrationRequest._password);
 	response._storeName = _m_database.getBusinessName(response._userId);
 	response._status = 1;
 	result._response = JsonResponsePacketSerializer::serializeResponse(response);
@@ -64,7 +66,7 @@ RequestResult IRequestHandler::addEmployee(Request request, SocketType socket)
 
 	AddEmployeeRequest add_employee = JsonRequestPacketDeserializer::deserializeAddEmployeeRequest(request._buffer);
 
-	if (!_m_database.doesUsernameExists(add_employee._userName))
+	if (!_m_database.doesUsernameExists(add_employee._username))
 	{
 		throw std::invalid_argument(ERROR_USER_EXISTS);
 	}
@@ -117,7 +119,6 @@ RequestResult IRequestHandler::deleteReceipt(Request request, SocketType socket)
 
 	//_m_database.deleteReceipt(deleteReceipt);
 	response._status = SUCCEED;
-
 	result._response = JsonResponsePacketSerializer::serializeResponse(response);
 	result._code = DELETERECEIPTRESPONSE;
 

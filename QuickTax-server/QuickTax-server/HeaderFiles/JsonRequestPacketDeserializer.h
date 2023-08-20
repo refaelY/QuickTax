@@ -2,13 +2,13 @@
 #include "json.hpp"
 #include "RequestStruct.h"
 
-#define USERNAME "_userName"
+#define USERNAME "_username"
 #define NAME "_name"
 #define PASSWORD "_password"
 #define BUSINESSID "_businessId"
 #define EMAIL "_email"
 #define USERID "_userId"
-#define REGISTRATIONDATE "registrationDate"
+#define REGISTRATIONDATE "_registrationDate"
 
 using nlohmann::json;
 

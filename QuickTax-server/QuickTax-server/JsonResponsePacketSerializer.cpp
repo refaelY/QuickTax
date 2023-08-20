@@ -54,7 +54,7 @@ std::vector<std::uint8_t> JsonResponsePacketSerializer::serializeResponse(const 
 
 		json employeeJson = {
 			{ "_userId", employee._userId },
-			{ "_userName", employee._userName },
+			{ "_userName", employee._username },
 			{ "_storeName", employee._storeName },
 			{ "_receipts", res }
 		};
