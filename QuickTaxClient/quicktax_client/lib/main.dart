@@ -1,7 +1,12 @@
+import 'dart:async';
+import 'dart:convert';
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'signup.dart';
 import 'menu.dart';
 import 'user_type.dart';
+import 'dart:io';
 
 void main() {
   runApp(QuickTax());
@@ -16,7 +21,20 @@ class QuickTax extends StatelessWidget {
   }
 }
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
+  @override
+  _LoginPageState createState() => _LoginPageState();
+}
+
+
+
+class _LoginPageState extends State<LoginPage>  {
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
+  
+  String username = '';
+  String password = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,6 +63,7 @@ class LoginPage extends StatelessWidget {
                   SizedBox(height: 32), //Space between logo and username
                   // Username Field
                   TextFormField(
+                    controller: _usernameController,
                     decoration: InputDecoration(
                       labelText: 'Username',
                       prefixIcon: Icon(Icons.person),
@@ -58,6 +77,7 @@ class LoginPage extends StatelessWidget {
                   SizedBox(height: 16),
                   // Password Field
                   TextFormField(
+                    controller: _passwordController,
                     obscureText: true,
                     decoration: InputDecoration(
                       labelText: 'Password',
@@ -70,17 +90,56 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 16),
+
+
+
                   // Login Button
                   ElevatedButton(
-                    onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => MenuPage(userType: UserType.Employee)),
-                    );
+                    onPressed: () async {
+                    
+                    username = _usernameController.text;
+                    password = _passwordController.text;
+
+                    final response = await sendRequestToServer();
+                    final responseCode = response["responseCode"];
+                    final responseMessage = response["responseMessage"];
+
+                    if (responseCode == 404)
+                    {
+                      Map<String, String> errMsg = Map<String, String>.from(json.decode(responseMessage));
+                      // ignore: use_build_context_synchronously
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Error'),
+                            content: Text(errMsg['_message']!),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('OK'),
+                                onPressed: () {
+                                  Navigator.of(context).pop(); // Close the dialog
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    }
+                    else if(responseCode == 200)
+                    {
+                      // ignore: use_build_context_synchronously
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MenuPage(userType: UserType.Employee)),
+                      );
+                    }
                   },
                   child: Text('Login'),
                   ),
                   SizedBox(height: 8),
+
+
                   // Signup Button
                   TextButton(
                     onPressed: () {
@@ -100,4 +159,43 @@ class LoginPage extends StatelessWidget {
       ),
     );
   }
+
+  Future<Map<String, dynamic>> sendRequestToServer() async 
+  {
+    final completer = Completer<Map<String, dynamic>>();
+
+    int? responseCode;
+    String? responseMessage;
+
+    final client = await Socket.connect('192.168.1.133', 5555);
+    Map<String, dynamic> requestData = {
+      "_username": username,
+      "_password": password,
+    };
+
+    String msg = "100" + jsonEncode(requestData).length.toString().padLeft(4, '0') + jsonEncode(requestData);
+    
+    client.write(msg);
+
+    // Create a List<int> buffer to store the response data
+    final responseBuffer = <int>[];
+
+    // Listen to the socket and collect response data
+    await client.listen((data) {
+      responseBuffer.addAll(data);
+      
+      // Check if the response is complete (at least 7 bytes)
+      if (responseBuffer.length >= 7) {
+        responseCode = int.parse(String.fromCharCodes(responseBuffer.sublist(0, 3)));
+        final responseSize = int.parse(String.fromCharCodes(responseBuffer.sublist(3, 7)));
+        responseMessage = utf8.decode(responseBuffer.sublist(7, 7 + responseSize));
+        completer.complete({"responseCode": responseCode, "responseMessage": responseMessage});
+
+        client.close(); // Close the socket
+      }
+    });
+
+    return completer.future;
+  }
+
 }
