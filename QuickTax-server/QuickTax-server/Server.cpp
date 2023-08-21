@@ -5,7 +5,8 @@ Server::Server() : _m_communicator(_m_database)
 {
     _m_database.open();
     _m_communicator = Communicator(_m_database);
-
+    _m_database.close();
+    
 #ifdef _WIN32
     WSAInitializer wsaInit;
 #endif

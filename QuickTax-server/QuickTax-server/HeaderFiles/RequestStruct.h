@@ -68,12 +68,11 @@ struct AddEmployeeRequest
 {
 	std::string _username;
 	std::string _password;
-	int _businessId;
+	int _userId;
 };
 
 struct GetEmployeeListRequest
 {
-	int _businessId;
 	int _userId;
 };
 

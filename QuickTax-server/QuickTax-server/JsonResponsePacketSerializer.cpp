@@ -11,7 +11,7 @@ std::vector<std::uint8_t> JsonResponsePacketSerializer::serializeResponse(const 
 
 std::vector<std::uint8_t> JsonResponsePacketSerializer::serializeResponse(const LoginResponse& packet)//
 {
-	json j{ { STATUS, packet._status } };
+    json j{ { STATUS, packet._status }, {"_storeName", packet._storeName}, {"_userId", packet._userId} };
 
 	std::vector<std::uint8_t> ans = toBite(j.dump());
 	return ans;

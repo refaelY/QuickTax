@@ -33,7 +33,7 @@ AddEmployeeRequest JsonRequestPacketDeserializer::deserializeAddEmployeeRequest(
 
 	addEmployee._username = j.at(USERNAME).get<std::string>();
 	addEmployee._password = j.at(PASSWORD).get<std::string>();
-	addEmployee._businessId = j.at(BUSINESSID).get<int>();
+	addEmployee._userId = j.at("_userId").get<int>();
 
 	return addEmployee;
 }
@@ -43,7 +43,6 @@ GetEmployeeListRequest JsonRequestPacketDeserializer::deserializeGetEmployeeList
 	GetEmployeeListRequest request;
 	json j = json::parse(buffer);
 
-	request._businessId = j.at(BUSINESSID).get<int>();
 	request._userId = j.at(USERID).get<int>();
 	
 
