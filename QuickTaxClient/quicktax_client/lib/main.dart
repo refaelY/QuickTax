@@ -128,11 +128,24 @@ class _LoginPageState extends State<LoginPage>  {
                     }
                     else if(responseCode == 200)
                     {
-                      // ignore: use_build_context_synchronously
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => MenuPage(userType: UserType.Employee)),
-                      );
+                      LoginResponse res = LoginResponse.fromJson(json.decode(responseMessage));
+
+                        if (res.status == 2)
+                        {
+                          // ignore: use_build_context_synchronously
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MenuPage(userType: UserType(type: UserTypeValue.Manager, userId: res.userId, storeName: res.storeName))),
+                          );
+                        }
+                        else
+                        {
+                          // ignore: use_build_context_synchronously
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MenuPage(userType: UserType(type: UserTypeValue.Employee, userId: res.userId, storeName: res.storeName))),
+                          );
+                        }
                     }
                   },
                   child: Text('Login'),

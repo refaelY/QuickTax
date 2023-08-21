@@ -148,11 +148,24 @@ class _SignupPageState extends State<SignupPage>  {
                       }
                       else if(responseCode == 201)
                       {
-                        // ignore: use_build_context_synchronously
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => MenuPage(userType: UserType.Manager)),
-                        );
+                        LoginResponse res = LoginResponse.fromJson(json.decode(responseMessage));
+
+                        if (res.status == 2)
+                        {
+                          // ignore: use_build_context_synchronously
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MenuPage(userType: UserType(type: UserTypeValue.Manager, userId: res.userId, storeName: res.storeName))),
+                          );
+                        }
+                        else
+                        {
+                          // ignore: use_build_context_synchronously
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => MenuPage(userType: UserType(type: UserTypeValue.Employee, userId: res.userId, storeName: res.storeName))),
+                          );
+                        }
                       }
                   },
                     child: Text('Sign up'),

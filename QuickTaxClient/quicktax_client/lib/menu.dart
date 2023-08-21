@@ -96,12 +96,17 @@ class _MenuPageState extends State<MenuPage> {
                     // Handle navigation here for Profile Settings
                   },
                 ),
-                if (widget.userType == UserType.Manager)
+                if (widget.userType.type == UserTypeValue.Manager)
                   PlaceholderWidget(
                     'Additional User',
                     Icons.person_add,
                     () {
-                      // Handle navigation here for Additional User (Manager only)
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddEmployeePage(userType: widget.userType),
+                      ),
+                    );
                     },
                   ),
               ],
@@ -137,7 +142,7 @@ class _MenuPageState extends State<MenuPage> {
                   icon: Icon(Icons.settings),
                   label: 'Profile Settings',
                 ),
-                if (widget.userType == UserType.Manager)
+                if (widget.userType.type == UserTypeValue.Manager)
                   const BottomNavigationBarItem(
                     icon: Icon(Icons.person_add),
                     label: 'Additional User',

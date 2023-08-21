@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:quicktax_client/add_employee.dart';
 import 'user_type.dart';
 import 'dart:io';
 import 'receipt_history.dart';
@@ -14,6 +15,7 @@ class ScanScreen extends StatefulWidget {
   const ScanScreen({required this.userType});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ScanScreenState createState() => _ScanScreenState();
 }
 
@@ -140,6 +142,7 @@ class _ScanScreenState extends State<ScanScreen> {
     dateController.text = purchaseDate;
 
     // Show extracted information using a dialog
+    // ignore: use_build_context_synchronously
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -314,8 +317,14 @@ class _ScanScreenState extends State<ScanScreen> {
               // Navigate to the Profile Settings screen
               break;
             case 3:
-              if (widget.userType == UserType.Manager) {
+              if (widget.userType.type == UserTypeValue.Manager) {
                 // Navigate to the Additional User screen
+                Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddEmployeePage(userType: widget.userType),
+                      ),
+                    );
               }
               break;
             // Add more cases if you have additional tabs
@@ -334,7 +343,7 @@ class _ScanScreenState extends State<ScanScreen> {
             icon: Icon(Icons.settings),
             label: 'Profile Settings',
           ),
-          if (widget.userType == UserType.Manager) // Show this item only for managers
+          if (widget.userType.type == UserTypeValue.Manager) // Show this item only for managers
             const BottomNavigationBarItem(
               icon: Icon(Icons.person_add),
               label: 'Additional User',

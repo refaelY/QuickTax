@@ -34,7 +34,7 @@ packages:
     source: hosted
     version: "0.10.8+5"
   camera_avfoundation:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: camera_avfoundation
       sha256: "1a416e452b30955b392f4efbf23291d3f2ba3660a85e1628859eb62d2a2bab26"
