@@ -1,0 +1,717 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "825CC66A-95E9-4551-89E8-EEC4AD566FC0"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32A4A457-0B09-4D04-B4C3-5876BC88D264"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10"
+            landmarkName = "main()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B3EFA7D3-D6DD-4F8B-9D85-E437B261C98D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "main()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1AD1AFDA-B469-4528-ACCB-5D39C9935366"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/HeaderFiles/IDataBase.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2C27AFE6-7ED8-40D0-917C-7114FF52ECC3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/Communicator.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
+            landmarkName = "Communicator::getData(clientSocket)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "926C04DC-DBE5-48BE-B93E-BAB650BD35E9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/Communicator.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "Communicator::getData(clientSocket)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C703541D-1990-4840-AD50-0E3B3D216F5E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/Communicator.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "Communicator::getData(clientSocket)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3062815A-82D4-4A69-8D2E-35453E91B836"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/Communicator.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "Communicator::getData(clientSocket)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B91B3057-B44F-46E2-B9D0-9C8FCD0F08D3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/Communicator.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "Communicator::getData(clientSocket)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B91B3057-B44F-46E2-B9D0-9C8FCD0F08D3 - 4d81a65a9a595bfc"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Communicator::getData(int)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/Communicator.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "118"
+                  endingLineNumber = "118"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "B91B3057-B44F-46E2-B9D0-9C8FCD0F08D3 - 4d81a65a9a595b9b"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Communicator::getData(int)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/Communicator.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4CA9F1D5-D0BE-40D4-8D32-9356B0C7D53C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/Communicator.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "135"
+            endingLineNumber = "135"
+            landmarkName = "Communicator::getData(clientSocket)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D71A7CA7-563E-4EAA-9E18-94A331879D65"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/Communicator.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "Communicator::sendData(clientSocket, buffer, code)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "68A2C75F-D548-4E14-B60E-FEF96E99919B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/Communicator.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "Communicator::getData(clientSocket)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F68DB8C6-3CD8-4973-A928-EEA53BA54CDF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/Communicator.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "Communicator::sendData(clientSocket, buffer, code)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "91DCF0CB-958C-41AE-8D2E-E63BF0F3F853"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/Communicator.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "Communicator::handleRequests(clientSocket)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A7E31089-C758-42E0-8E66-167F54160B0E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/Server.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "6"
+            endingLineNumber = "6"
+            landmarkName = "Server::Server()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "34620216-0A31-4C4B-B0CD-8FEA7B5EAC21"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/Communicator.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "101"
+            endingLineNumber = "101"
+            landmarkName = "Communicator::handleRequests(clientSocket)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "719AC116-D01A-465E-B4F5-62C0BDA53EAC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/IRequestHandler.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "IRequestHandler::login(request, socket)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "64C0048A-D524-4011-9F92-64125AB36478"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/IDataBase.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "IDataBase::getUserId(username, password)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "64C0048A-D524-4011-9F92-64125AB36478 - 59b71ae9a78743bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::getUserId(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "59"
+                  endingLineNumber = "59"
+                  offsetFromSymbolStart = "152">
+               </Location>
+               <Location
+                  uuid = "64C0048A-D524-4011-9F92-64125AB36478 - 59b71ae9a78743fb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::getUserId(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "61"
+                  endingLineNumber = "61"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "64C0048A-D524-4011-9F92-64125AB36478 - 59b71ae9a7875e70"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::getUserId(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "166"
+                  endingLineNumber = "166"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "64C0048A-D524-4011-9F92-64125AB36478 - 59b71ae9a7875c87"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::getUserId(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "177"
+                  endingLineNumber = "177"
+                  offsetFromSymbolStart = "44">
+               </Location>
+               <Location
+                  uuid = "64C0048A-D524-4011-9F92-64125AB36478 - 59b71ae9a787537b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::getUserId(std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;, std::__1::basic_string&lt;char, std::__1::char_traits&lt;char&gt;, std::__1::allocator&lt;char&gt; &gt;)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "189"
+                  endingLineNumber = "189"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4635FCFE-95DF-44C8-8A2E-F2514062DAA8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/IDataBase.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "IDataBase::doesUserExists(loginRequest)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4635FCFE-95DF-44C8-8A2E-F2514062DAA8 - b21899d57e63f24e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::doesUserExists(LoginRequest)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "4635FCFE-95DF-44C8-8A2E-F2514062DAA8 - b21899d57e63e47a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::doesUserExists(LoginRequest)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "201"
+                  endingLineNumber = "201"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "4635FCFE-95DF-44C8-8A2E-F2514062DAA8 - b21899d57e63e597"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::doesUserExists(LoginRequest)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "212"
+                  endingLineNumber = "212"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "4635FCFE-95DF-44C8-8A2E-F2514062DAA8 - b21899d57e63e30c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::doesUserExists(LoginRequest)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "223"
+                  endingLineNumber = "223"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "4635FCFE-95DF-44C8-8A2E-F2514062DAA8 - b21899d57e63e098"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::doesUserExists(LoginRequest)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "235"
+                  endingLineNumber = "235"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2C9F9DA2-0B73-4809-B5B9-0F2F95E57AD4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/IDataBase.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "321"
+            endingLineNumber = "321"
+            landmarkName = "IDataBase::createBusiness(request)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2C9F9DA2-0B73-4809-B5B9-0F2F95E57AD4 - e79de9f7701889a0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::createBusiness(BusinessRegistrationRequest)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "2C9F9DA2-0B73-4809-B5B9-0F2F95E57AD4 - e79de9f7701978c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::createBusiness(BusinessRegistrationRequest)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "269"
+                  endingLineNumber = "269"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  uuid = "2C9F9DA2-0B73-4809-B5B9-0F2F95E57AD4 - e79de9f7701978c1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::createBusiness(BusinessRegistrationRequest)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "269"
+                  endingLineNumber = "269"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "2C9F9DA2-0B73-4809-B5B9-0F2F95E57AD4 - e79de9f770197f54"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::createBusiness(BusinessRegistrationRequest)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "280"
+                  endingLineNumber = "280"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "2C9F9DA2-0B73-4809-B5B9-0F2F95E57AD4 - e79de9f770197e3f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::createBusiness(BusinessRegistrationRequest)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "291"
+                  endingLineNumber = "291"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "2C9F9DA2-0B73-4809-B5B9-0F2F95E57AD4 - e79de9f770197ca3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::createBusiness(BusinessRegistrationRequest)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "303"
+                  endingLineNumber = "303"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "2C9F9DA2-0B73-4809-B5B9-0F2F95E57AD4 - e79de9f77019721d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::createBusiness(BusinessRegistrationRequest)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "321"
+                  endingLineNumber = "321"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "85E18CC5-AC8C-4133-8E48-47839717DB7A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/IDataBase.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
+            landmarkName = "IDataBase::open()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7E852065-C1AF-4204-9EEB-7CC1D4F5F0DC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/IDataBase.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "IDataBase::getEmployeeList(request)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7E852065-C1AF-4204-9EEB-7CC1D4F5F0DC - 507017085add1d3b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::getEmployeeList(GetEmployeeListRequest)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "7E852065-C1AF-4204-9EEB-7CC1D4F5F0DC - 507017085add1e5e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::getEmployeeList(GetEmployeeListRequest)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F3340D80-D634-4752-9CDD-B6238EE1959F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/IRequestHandler.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "112"
+            endingLineNumber = "112"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "30AC2E0B-FDAC-4639-BF27-44E2AE97AF32"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/JsonResponsePacketSerializer.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "JsonResponsePacketSerializer::serializeResponse(packet)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7B6799F1-1B91-4240-8ADB-EFEB05414453"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickTax-server/IDataBase.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "247"
+            endingLineNumber = "247"
+            landmarkName = "IDataBase::doesUserDirector(loginRequest)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
