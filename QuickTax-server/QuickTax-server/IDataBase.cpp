@@ -261,6 +261,24 @@ bool IDataBase::doesUserDirector(LoginRequest loginRequest) {
     return ans;
 }
 
+bool IDataBase::doesUserDirectorById(int id)
+{
+    std::string sqlStatement;
+    char* errMessage = nullptr;
+    int res;
+    bool ans = false;
+
+    sqlStatement = "SELECT IS_MANAGER from EMPLOYEE where ID = \"" + std::to_string(id) +  "\"; ";
+    res = sqlite3_exec(db, sqlStatement.c_str(), doesItemExistsCallback, static_cast<void*>(&ans), &errMessage);
+
+    if (res != SQLITE_OK) {
+        cout << "user is not director" << endl;
+        sqlite3_free(errMessage);
+    }
+
+    return ans;
+}
+
 bool IDataBase::doesUsernameExists(std::string username) {
     std::string sqlStatement;
     char* errMessage = nullptr;

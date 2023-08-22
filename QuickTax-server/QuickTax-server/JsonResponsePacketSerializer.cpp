@@ -61,8 +61,11 @@ std::vector<std::uint8_t> JsonResponsePacketSerializer::serializeResponse(const 
 		j.push_back(employeeJson);
 	}
 
-	std::vector<std::uint8_t> ans(j.dump().begin(), j.dump().end());
-	return ans;
+    std::string jsonString = j.dump(); // Convert JSON to string
+
+    // Convert string to bytes without null terminator
+    std::vector<std::uint8_t> ans(jsonString.begin(), jsonString.end());
+    return ans;
 }
 
 

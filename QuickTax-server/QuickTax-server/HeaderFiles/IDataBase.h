@@ -52,6 +52,7 @@ public:
     
     bool doesUserExists(LoginRequest loginRequest);
     bool doesUserDirector(LoginRequest loginRequest);
+    bool doesUserDirectorById(int id);
     bool doesUsernameExists(string username);
     
 	int getUserId(std::string username, std::string password);

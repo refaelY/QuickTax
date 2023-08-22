@@ -66,14 +66,12 @@ RequestResult IRequestHandler::addEmployee(Request request, SocketType socket)
 {
 	RequestResult result;
 	AddEmployeeResponse response;
-    LoginRequest loginRequest;
     
 	AddEmployeeRequest add_employee = JsonRequestPacketDeserializer::deserializeAddEmployeeRequest(request._buffer);
     
-    loginRequest._username = add_employee._username;
-    loginRequest._password = add_employee._password;
+
     _m_database.open();
-    if (_m_database.doesUserDirector(loginRequest))
+    if (_m_database.doesUserDirectorById(add_employee._userId))
     {
         if (_m_database.doesUsernameExists(add_employee._username))
         {
