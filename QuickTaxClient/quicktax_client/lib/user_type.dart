@@ -3,6 +3,8 @@ class UserType {
   final int userId;
   final String storeName;
 
+
+  
   UserType({
     required this.type,
     required this.userId,

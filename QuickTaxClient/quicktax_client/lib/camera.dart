@@ -6,6 +6,7 @@ import 'user_type.dart';
 import 'dart:io';
 import 'receipt_history.dart';
 import 'package:flutter_tesseract_ocr/flutter_tesseract_ocr.dart';
+import 'package:camera_avfoundation/camera_avfoundation.dart';
 
 
 
@@ -72,6 +73,7 @@ class _ScanScreenState extends State<ScanScreen> {
         _showCameraPreview = false;
       });
     } catch (e) {
+      // ignore: use_build_context_synchronously
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -109,38 +111,59 @@ class _ScanScreenState extends State<ScanScreen> {
   }
 
  Future<void> _processImage(String imagePath) async {
-    final extractedText = await FlutterTesseractOcr.extractText(imagePath, language: 'eng');
+  try
+    {
+      final extractedText = await FlutterTesseractOcr.extractText(imagePath, language: 'eng');
 
-    // Implement text parsing to extract purchase date, purchase volume, and store name
-    String purchaseDate = "";
-    double purchaseVolume = 0.0;
-    String storeName = "";
+      // Implement text parsing to extract purchase date, purchase volume, and store name
+      String purchaseDate = "";
+      double purchaseVolume = 0.0;
+      String storeName = "";
 
-    // Example regular expressions (you'll need to adjust these based on your receipt format)
-    final datePattern = RegExp(r'\d{2}/\d{2}/\d{4}');
-    final volumePattern = RegExp(r'\d+(\.\d+)?\s*(L|l|G|g|KG|kg)');
-    final storePattern = RegExp(r'Store: (.+)');
+      // Example regular expressions (you'll need to adjust these based on your receipt format)
+      final datePattern = RegExp(r'\d{2}/\d{2}/\d{4}');
+      final volumePattern = RegExp(r'\d+(\.\d+)?\s*(L|l|G|g|KG|kg)');
+      final storePattern = RegExp(r'Store: (.+)');
 
-    final dateMatch = datePattern.firstMatch(extractedText);
-    if (dateMatch != null) {
-      purchaseDate = dateMatch.group(0)!;
+      final dateMatch = datePattern.firstMatch(extractedText);
+      if (dateMatch != null) {
+        purchaseDate = dateMatch.group(0)!;
+      }
+
+      final volumeMatch = volumePattern.firstMatch(extractedText);
+      if (volumeMatch != null) {
+        purchaseVolume = double.parse(volumeMatch.group(0) ?? '0');
+      }
+
+      final storeMatch = storePattern.firstMatch(extractedText);
+      if (storeMatch != null) {
+        storeName = storeMatch.group(1)!;
+      }
+
+      // Update the text controllers with extracted information
+      storeController.text = storeName;
+      amountController.text = purchaseVolume.toString();
+      dateController.text = purchaseDate;
+    } catch (e) {
+      // ignore: use_build_context_synchronously
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Error'),
+            content: Text('Error capturing photo: $e'),
+            actions: <Widget>[
+              TextButton(
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop(); // Close the dialog
+                },
+              ),
+            ],
+          );
+        },
+      );
     }
-
-    final volumeMatch = volumePattern.firstMatch(extractedText);
-    if (volumeMatch != null) {
-      purchaseVolume = double.parse(volumeMatch.group(0) ?? '0');
-    }
-
-    final storeMatch = storePattern.firstMatch(extractedText);
-    if (storeMatch != null) {
-      storeName = storeMatch.group(1)!;
-    }
-
-    // Update the text controllers with extracted information
-    storeController.text = storeName;
-    amountController.text = purchaseVolume.toString();
-    dateController.text = purchaseDate;
-
     // Show extracted information using a dialog
     // ignore: use_build_context_synchronously
     showDialog(
@@ -186,7 +209,7 @@ class _ScanScreenState extends State<ScanScreen> {
         );
       },
     );
-  }
+}
 
 
 
