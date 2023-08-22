@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:quicktax_client/add_employee.dart';
 import 'user_type.dart';
 import 'camera.dart';
+import 'add_employee.dart';
 
-class ReceiptHistoryScreen extends StatelessWidget {
+class ReceiptHistoryScreen extends StatefulWidget {
   final UserType userType;
 
-  ReceiptHistoryScreen({required this.userType});
+  const ReceiptHistoryScreen({required this.userType});
 
+  // ignore: library_private_types_in_public_api
+  _ReceiptHistoryScreen createState() => _ReceiptHistoryScreen();
+}
+
+class _ReceiptHistoryScreen extends State<ReceiptHistoryScreen>
+{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true, // Make the app bar transparent
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(kToolbarHeight),
+        preferredSize: const Size.fromHeight(kToolbarHeight),
         child: AppBar(
           backgroundColor: Colors.transparent, // Make the app bar transparent
           elevation: 0, // Remove the shadow under the app bar
           title:                   // "Receipt History" Text
-            Text(
+            const Text(
               'Receipt History',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.black),
             ), 
@@ -100,7 +108,7 @@ class ReceiptHistoryScreen extends StatelessWidget {
               Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ScanScreen(userType: this.userType),
+                        builder: (context) => ScanScreen(userType: widget.userType),
                       ),
                     );
               break;
@@ -108,28 +116,34 @@ class ReceiptHistoryScreen extends StatelessWidget {
               // Navigate to the Profile Settings screen
               break;
             case 3:
-              if (userType == UserType.Manager) {
+              if (widget.userType.type == UserTypeValue.Manager) {
                 // Navigate to the Additional User screen
+                Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AddEmployeePage(userType: widget.userType),
+                      ),
+                    );
               }
               break;
             // Add more cases if you have additional tabs
           }
         },
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.camera_alt),
             label: 'Scan',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.history),
             label: 'Receipt History',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Profile Settings',
           ),
-          if (userType == UserType.Manager) // Show this item only for managers
-            BottomNavigationBarItem(
+          if (widget.userType.type == UserTypeValue.Manager) // Show this item only for managers
+            const BottomNavigationBarItem(
               icon: Icon(Icons.person_add),
               label: 'Additional User',
             ),
