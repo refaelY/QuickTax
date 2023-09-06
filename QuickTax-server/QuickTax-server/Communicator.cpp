@@ -126,8 +126,8 @@ Request Communicator::getData(SocketType clientSocket)
 	if (size != 0)
 	{
 		char* data = new char[size]; //create arry with this size
-        if (code == 111)
-            std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        if (code == 102)
+            std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 		recv(clientSocket, data, size, 0);
 		//printf(data);
 		for (int i = 0; i < size; i++) //Transferring everything to vector<BITE>
