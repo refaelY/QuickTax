@@ -126,9 +126,28 @@ Request Communicator::getData(SocketType clientSocket)
 	if (size != 0)
 	{
 		char* data = new char[size]; //create arry with this size
-        if (code == 102)
-            std::this_thread::sleep_for(std::chrono::milliseconds(5000));
-		recv(clientSocket, data, size, 0);
+        int bytesReceived = 0; // track the number of bytes received
+
+        while (bytesReceived < size) {
+            int bytesRead = recv(clientSocket, data + bytesReceived, size - bytesReceived, 0);
+            
+            if (bytesRead == -1) {
+                // Handle the error (e.g., connection closed, or other socket error)
+                delete[] data; // Don't forget to free memory in case of an error
+                // Add appropriate error handling here
+                break; // Exit the loop
+            } else if (bytesRead == 0) {
+                // Connection closed by the client
+                delete[] data; // Don't forget to free memory in case of an error
+                // Add appropriate handling for a closed connection
+                break; // Exit the loop
+            } else {
+                bytesReceived += bytesRead; // Increment the total bytes received
+            }
+        }
+
+        
+        
 		//printf(data);
 		for (int i = 0; i < size; i++) //Transferring everything to vector<BITE>
 		{
