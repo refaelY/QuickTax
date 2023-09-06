@@ -1536,6 +1536,21 @@
                   endingLineNumber = "474"
                   offsetFromSymbolStart = "48">
                </Location>
+               <Location
+                  uuid = "114EF9ED-0440-4564-967A-94722859396F - 477402eec88d525f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "IDataBase::deleteReceipt(DeleteReceiptRequest)"
+                  moduleName = "QuickTax-server"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/refaelyatche/Desktop/RafTech-Solutions/QuickTax/QuickTax-server/QuickTax-server/IDataBase.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "477"
+                  endingLineNumber = "477"
+                  offsetFromSymbolStart = "48">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>

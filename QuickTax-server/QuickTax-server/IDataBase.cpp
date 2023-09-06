@@ -1,8 +1,8 @@
 #include "HeaderFiles/IDataBase.h"
 
-const std::string dbFileName = "root/QuickTax/QuickTax-server/QuickTax-server/DataBaseServer.db";
+const std::string dbFileName = "/Users/refaelyatche/Desktop/RafTech-Solutions/QuickTax/QuickTax-server/QuickTax-server/DataBaseServer.db";
 
-const std::string IMAGE_FOLDER = "root/QuickTax/QuickTax-server/QuickTax-server/receipt_images/";
+const std::string IMAGE_FOLDER = "/Users/refaelyatche/Desktop/RafTech-Solutions/QuickTax/QuickTax-server/QuickTax-server/receipt_images/";
 
 
 
