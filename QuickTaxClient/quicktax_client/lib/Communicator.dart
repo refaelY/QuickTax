@@ -5,7 +5,7 @@ import 'dart:io';
 
 class Communicator
 {
-  static const String SERVER_IP = "192.168.1.133";
+  static const String SERVER_IP = "13.51.56.151";
 
   Future<Map<String, dynamic>> sendRequestToServer(String msg) async
   {
