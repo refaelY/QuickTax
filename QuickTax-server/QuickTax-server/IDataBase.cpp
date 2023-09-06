@@ -1,8 +1,8 @@
 #include "HeaderFiles/IDataBase.h"
 
-const std::string dbFileName = "/root/QuickTax/QuickTax-server/QuickTax-server/DataBaseServer.db";
+const std::string dbFileName = "root/QuickTax/QuickTax-server/QuickTax-server/DataBaseServer.db";
 
-const std::string IMAGE_FOLDER = "/root/QuickTax/QuickTax-server/QuickTax-server/receipt_images/";
+const std::string IMAGE_FOLDER = "root/QuickTax/QuickTax-server/QuickTax-server/receipt_images/";
 
 
 
@@ -23,19 +23,19 @@ bool fileExists(const std::string& filePath)
 
 bool IDataBase::open()
 {
-    bool file_exist = fileExists(dbFileName);
-    int res;
+    int file_exist = fileExists(dbFileName);
+    int res = sqlite3_open(dbFileName.c_str(), &db);
     std::string sqlStatement;
     
 
-    if (!file_exist)
-    {
-        res = sqlite3_open(dbFileName.c_str(), &db);
-        if (res != SQLITE_OK) {
-            cout << "Failed to open DB" << endl;
-            return false;
-        }
-        
+
+    if (res != SQLITE_OK) {
+        db = nullptr;
+        cout << "Failed to open DB" << endl;
+        return false;
+    }
+
+    if (file_exist != 0) {
         sqlStatement = "CREATE TABLE IF NOT EXISTS BUSINESS (ID INTEGER, NAME TEXT, registrationDate TEXT, USERNAME TEXT, PASSWORD TEXT, PRIMARY KEY(ID))";
         char* errMessage = nullptr;
         res = sqlite3_exec(db, sqlStatement.c_str(), nullptr, nullptr, &errMessage);
@@ -65,8 +65,6 @@ bool IDataBase::open()
         }
     }
 
-
-    
     return true;
 }
 
