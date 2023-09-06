@@ -15,12 +15,13 @@ enum RequestCode
 	ADDEMPLOYEE = 107,
 	REMOVEEMPLOYEE = 108,
 	UPDATEEMPLOYEE = 109,
-	RECEIPTLIST = 110
+	RECEIPTLIST = 110,
+    GETIMG = 111
 };
 
 	struct Receipt
 	{
-		int _id;
+        std::string _image;
 		int _userId;
 		std::string _storeName;
 		double _amount;
@@ -90,4 +91,9 @@ struct RemoveEmployeeRequest
 struct GetReceiptListRequest
 {
 	int _userId;
+};
+
+struct GetImgRequest
+{
+    std::string _pathImg;
 };

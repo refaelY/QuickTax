@@ -26,10 +26,10 @@ class Communicator
       responseBuffer.addAll(data);
       
       // Check if the response is complete (at least 7 bytes)
-      if (responseBuffer.length >= 7) {
+      if (responseBuffer.length >= 13) {
         responseCode = int.parse(String.fromCharCodes(responseBuffer.sublist(0, 3)));
-        final responseSize = int.parse(String.fromCharCodes(responseBuffer.sublist(3, 7)));
-        responseMessage = utf8.decode(responseBuffer.sublist(7, 7 + responseSize));
+        final responseSize = int.parse(String.fromCharCodes(responseBuffer.sublist(3, 13)));
+        responseMessage = utf8.decode(responseBuffer.sublist(13, 13 + responseSize));
         completer.complete({"responseCode": responseCode, "responseMessage": responseMessage});
 
         client.close(); // Close the socket

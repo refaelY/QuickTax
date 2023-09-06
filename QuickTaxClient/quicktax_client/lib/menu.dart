@@ -4,7 +4,7 @@ import 'profile_setting.dart';
 import 'receipt_history.dart';
 import 'add_employee.dart';
 import 'user_type.dart';
-
+import 'receipt_history_manager.dart';
 
 class MenuPage extends StatefulWidget {
   final UserType userType;
@@ -50,7 +50,7 @@ class _MenuPageState extends State<MenuPage> {
               opacity: 0.6, // Set the desired transparency value here (0.0 to 1.0)
               child: Image.asset(
                 'assets/images/logo.png', // Replace with your logo image path
-                height: 200, // Adjust the height as needed
+                height: 400, // Adjust the height as needed
               ),
             ),
           ),
@@ -72,7 +72,13 @@ class _MenuPageState extends State<MenuPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => ReceiptHistoryScreen(userType: widget.userType),
+                        builder: (context) {
+                          if (widget.userType.type == UserTypeValue.Manager) {
+                            return ReceiptHistoryManagerScreen(userType: widget.userType);
+                          } else {
+                            return ReceiptHistoryScreen(userType: widget.userType);
+                          }
+                        },
                       ),
                     );
                   },
@@ -129,6 +135,8 @@ class _MenuPageState extends State<MenuPage> {
                   );
                 });
               },
+              selectedItemColor: Colors.blue, // Set your custom color for selected item here
+              unselectedItemColor: Colors.grey, 
               items: [
                 const BottomNavigationBarItem(
                   icon: Icon(Icons.history),

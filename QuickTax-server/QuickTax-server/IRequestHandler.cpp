@@ -95,10 +95,14 @@ RequestResult IRequestHandler::uploadReceipt(Request request, SocketType socket)
 {
 	RequestResult result;
 	UploadReceiptResponse response;
+    
 	
     _m_database.open();
 	UploadReceiptRequest upload_Receipt = JsonRequestPacketDeserializer::deserializeUploadReceiptRequest(request._buffer);
-	_m_database.uploadReceipt(upload_Receipt);
+    
+    
+    std::string image_path = _m_database.uploadReceipt(upload_Receipt);
+    
 	response._status = SUCCEED;
 
     _m_database.close();
@@ -132,13 +136,13 @@ RequestResult IRequestHandler::deleteReceipt(Request request, SocketType socket)
 
 	DeleteReceiptRequest deleteReceipt = JsonRequestPacketDeserializer::deserializeDeleteReceiptRequest(request._buffer);
 
-   //_m_database.open();
-	//_m_database.deleteReceipt(deleteReceipt);
+    _m_database.open();
+	_m_database.deleteReceipt(deleteReceipt);
 	response._status = SUCCEED;
 	result._response = JsonResponsePacketSerializer::serializeResponse(response);
 	result._code = DELETERECEIPTRESPONSE;
 
-    //_m_database.close();
+    _m_database.close();
 	return result;
 }
 
@@ -149,7 +153,8 @@ RequestResult IRequestHandler::removeEmployee(Request request, SocketType socket
 	RemoveEmployeeResponse response;
 
 	RemoveEmployeeRequest removeEmployee = JsonRequestPacketDeserializer::deserializeRemoveEmployeeRequest(request._buffer);
-
+    
+    
     _m_database.open();
 	_m_database.removeEmployee(removeEmployee);
 	response._status = SUCCEED;
@@ -179,3 +184,21 @@ RequestResult IRequestHandler::getReceiptList(Request request, SocketType socket
 }
 
 
+RequestResult IRequestHandler::getImg(Request request, SocketType socket)
+{
+    
+    RequestResult result;
+    GetImgResponse response;
+
+    GetImgRequest imgPath = JsonRequestPacketDeserializer::deserializegetImgRequest(request._buffer);
+
+    _m_database.open();
+    response._img = _m_database.getImg(imgPath._pathImg);
+    _m_database.close();
+    
+    result._response = JsonResponsePacketSerializer::serializeResponse(response);
+    result._code = GETIMGRESPONSE;
+
+    return result;
+    
+}

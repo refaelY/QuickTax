@@ -23,7 +23,7 @@ public:
 	static RemoveEmployeeRequest deserializeRemoveEmployeeRequest(const std::vector<std::uint8_t> buffer);
 	static GetReceiptListRequest deserializeGetReceiptListRequest(const std::vector<std::uint8_t> buffer);
 	static UploadReceiptRequest deserializeUploadReceiptRequest(const std::vector<std::uint8_t> buffer);
-
+    static GetImgRequest deserializegetImgRequest(const std::vector<std::uint8_t> buffer);
 
 	
 };

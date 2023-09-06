@@ -43,7 +43,7 @@ std::vector<std::uint8_t> JsonResponsePacketSerializer::serializeResponse(const 
 
 		for (const auto& receipt : employee._receipts) {
 			json receipts = {
-				{ "_id", receipt._id },
+				{ "_image", receipt._image },
 				{ "_userId", receipt._userId },
 				{ "_storeName", receipt._storeName },
 				{ "_amount", receipt._amount },
@@ -92,7 +92,7 @@ std::vector<std::uint8_t> JsonResponsePacketSerializer::serializeResponse(const 
 	json j;
 	for (const auto& receipt : packet._receiptList) {
 		json receiptJson = {
-			{ "_id", receipt._id },
+			{ "_image", receipt._image },
 			{ "_userId", receipt._userId },
 			{ "_storeName", receipt._storeName },
 			{ "_amount", receipt._amount },
@@ -101,7 +101,11 @@ std::vector<std::uint8_t> JsonResponsePacketSerializer::serializeResponse(const 
 		j.push_back(receiptJson);
 	}
 
-	std::vector<std::uint8_t> ans(j.dump().begin(), j.dump().end());
+    std::string jsonString = j.dump(); // Convert JSON to string
+
+    // Convert string to bytes without null terminator
+    std::vector<std::uint8_t> ans(jsonString.begin(), jsonString.end());
+    
 	return ans;
 }
 
@@ -113,4 +117,12 @@ std::vector<std::uint8_t> JsonResponsePacketSerializer::toBite(std::string temp)
 	for (int i = 0; i < temp.size(); i++)
 		ans.push_back(temp[i]);
 	return ans;
+}
+
+std::vector<std::uint8_t> JsonResponsePacketSerializer::serializeResponse(const GetImgResponse& packet)//
+{
+    json j{ { "_img", packet._img } };
+
+    std::vector<std::uint8_t> ans = toBite(j.dump());
+    return ans;
 }

@@ -48,7 +48,7 @@ class _SignupPageState extends State<SignupPage>  {
                    // Logo image at the top
                   Image.asset(
                     'assets/images/logo.png',
-                    height: 200,
+                    height: 300,
                   ),
                   
                   SizedBox(height: 32), //Space between logo and business id
@@ -131,7 +131,7 @@ class _SignupPageState extends State<SignupPage>  {
                         registrationDate: ' ',
                       );
 
-                      String msg = "101" + jsonEncode(requestData.toJson()).length.toString().padLeft(4, '0') + jsonEncode(requestData.toJson());    
+                      String msg = "101" + jsonEncode(requestData.toJson()).length.toString().padLeft(10, '0') + jsonEncode(requestData.toJson());    
                     
                       communicator.sendRequestToServer(msg).then((response)
                       {

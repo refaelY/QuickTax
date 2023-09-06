@@ -1,5 +1,6 @@
 #include "HeaderFiles/JsonRequestPacketDeserializer.h"
-
+#include <thread>
+#include <chrono>
 
 LoginRequest JsonRequestPacketDeserializer::deserializeLoginRequest(const std::vector<std::uint8_t> buffer)
 {
@@ -55,13 +56,13 @@ DeleteReceiptRequest JsonRequestPacketDeserializer::deserializeDeleteReceiptRequ
 	DeleteReceiptRequest request;
 	json j = json::parse(buffer);
 
-	int id = j.at("receipt").at("_id");
-	int userId = j.at("receipt").at("_userId");
-	std::string storeName = j.at("receipt").at("_storeName");
-	double amount = j.at("receipt").at("_amount");
-	std::string dateTime = j.at("receipt").at("_dateTime");
+	std::string image = j.at("_receipt").at("_image");
+	int userId = j.at("_receipt").at("_userId");
+	std::string storeName = j.at("_receipt").at("_storeName");
+	double amount = j.at("_receipt").at("_amount");
+	std::string dateTime = j.at("_receipt").at("_dateTime");
 
-	request._receipt = Receipt{ id, userId, storeName, amount, dateTime };
+	request._receipt = Receipt{ image, userId, storeName, amount, dateTime };
 
 	return request;
 }
@@ -92,19 +93,28 @@ GetReceiptListRequest JsonRequestPacketDeserializer::deserializeGetReceiptListRe
 
 UploadReceiptRequest JsonRequestPacketDeserializer::deserializeUploadReceiptRequest(const std::vector<std::uint8_t> buffer)
 {
-	UploadReceiptRequest request;
-	json j = json::parse(buffer);
+    UploadReceiptRequest request;
 
-	int id = j.at("receipt").at("_id");
-	int userId = j.at("receipt").at("_userId");
-	std::string storeName = j.at("receipt").at("_storeName");
-	double amount = j.at("receipt").at("_amount");
-	std::string dateTime = j.at("receipt").at("_dateTime");
+    json j = json::parse(buffer);
 
-	request._receipt = Receipt{ id, userId, storeName, amount, dateTime };
+    std::string image = j.at("_receipt").at("_image");
+    int userId = j.at("_receipt").at("_userId");
+    std::string storeName = j.at("_receipt").at("_storeName");
+    double amount = j.at("_receipt").at("_amount");
+    std::string dateTime = j.at("_receipt").at("_dateTime");
 
-	return request;
+    request._receipt = Receipt{ image, userId, storeName, amount, dateTime };
+
+    return request;
 }
 
 
+GetImgRequest JsonRequestPacketDeserializer::deserializegetImgRequest(const std::vector<std::uint8_t> buffer)
+{
+    GetImgRequest img;
+    json j = json::parse(buffer);
 
+    img._pathImg = j.at("_pathImg").get<std::string>();
+    
+    return img;
+}

@@ -1,107 +1,53 @@
-class _LoginPageState extends State<LoginPage> {
-  final _usernameController = TextEditingController();
-  final _passwordController = TextEditingController();
+final jsonResponse = jsonDecode(responseMessage);
+List<Employee> employeeList = [];
 
-  String username = '';
-  String password = '';
+for (var employeeJson in jsonResponse) {
+  Employee employee = Employee.fromJson(employeeJson);
 
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  ScrollController _scrollController = ScrollController();
+  List<Receipt> receiptList = [];
+  for (var receipt in employee.receipts) {
+    Map<String, dynamic> requestData = {
+      "_pathImg": receipt.image, // This is the path of the img
+    };
 
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
+    String imgRequestMsg = "111" +
+        jsonEncode(requestData).length.toString().padLeft(10, '0') +
+        jsonEncode(requestData);
+
+    final imgResponse = await communicator.sendRequestToServer(imgRequestMsg);
+
+    final imgResponseCode = imgResponse["responseCode"];
+    final imgResponseMessage = imgResponse["responseMessage"];
+
+    if (imgResponseCode == 404) {
+      throw Exception("Error fetching receipt image");
+    } else if (imgResponseCode == 211) {
+      try {
+        Map<String, String> imgRes =
+            Map<String, String>.from(json.decode(imgResponseMessage));
+        // Create a new Receipt object instead of modifying the existing one
+        Receipt updatedReceipt = Receipt(
+          image: imgRes['_img'] ?? ' ', // This is the base64 img
+          userId: receipt.userId,
+          storeName: receipt.storeName,
+          amount: receipt.amount,
+          dateTime: receipt.dateTime,
+        );
+        receiptList.add(updatedReceipt);
+      } catch (e) {
+        // Handle non-image response scenario here
+      }
+    }
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus();
-        },
-        child: Stack(
-          children: [
-            // Background Image
-            Image.asset(
-              'assets/images/background.jpg',
-              fit: BoxFit.cover,
-              width: double.infinity,
-              height: double.infinity,
-            ),
-            SingleChildScrollView(
-              controller: _scrollController,
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Form(
-                    key: _formKey,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        // ... (Logo and other UI elements)
-
-                        SizedBox(height: 32),
-
-                        // Username Field
-                        TextFormField(
-                          controller: _usernameController,
-                          decoration: InputDecoration(
-                            labelText: 'Username',
-                            prefixIcon: Icon(Icons.person),
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 16),
-
-                        // Password Field
-                        TextFormField(
-                          controller: _passwordController,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            labelText: 'Password',
-                            prefixIcon: Icon(Icons.lock),
-                            filled: true,
-                            fillColor: Colors.white,
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(18.0),
-                            ),
-                          ),
-                        ),
-                        SizedBox(height: 16),
-
-                        // Login Button
-                        ElevatedButton(
-                          onPressed: () async {
-                            // ... (Login logic)
-
-                            // Clear the form and scroll down
-                            _formKey.currentState!.reset();
-                            _scrollController.animateTo(
-                              0.0,
-                              duration: Duration(milliseconds: 300),
-                              curve: Curves.easeInOut,
-                            );
-                          },
-                          child: Text('Login'),
-                        ),
-
-                        // ... (Signup Button)
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+  // Assign the updated receipt list to the employee
+  employee = Employee(
+    userId: employee.userId,
+    userName: employee.userName,
+    storeName: employee.storeName,
+    receipts: receiptList,
+  );
+  employee.receiptCount = employee.receipts.length;
+  employeeList.add(employee);
 }
+
+return employeeList;

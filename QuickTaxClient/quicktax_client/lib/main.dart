@@ -55,10 +55,10 @@ class _LoginPageState extends State<LoginPage>  {
                   // Logo image at the top
                   Image.asset(
                     'assets/images/logo.png',
-                    height: 200,
+                    height: 300,
                   ),
                   
-                  SizedBox(height: 32), //Space between logo and username
+                  SizedBox(height: 2), //Space between logo and username
                   // Username Field
                   TextFormField(
                     controller: _usernameController,
@@ -104,7 +104,7 @@ class _LoginPageState extends State<LoginPage>  {
                       "_password": password,
                     };
 
-                    String msg = "100" + jsonEncode(requestData).length.toString().padLeft(4, '0') + jsonEncode(requestData);
+                    String msg = "100" + jsonEncode(requestData).length.toString().padLeft(10, '0') + jsonEncode(requestData);
                     
                     communicator.sendRequestToServer(msg).then((response) 
                     {

@@ -1,3 +1,4 @@
+
 class UserType {
   final UserTypeValue type;
   final int userId;
@@ -18,14 +19,14 @@ enum UserTypeValue {
 }
 
 class Receipt {
-  final int id;
+  final String image; 
   final int userId;
   final String storeName;
   final double amount;
   final String dateTime;
 
   Receipt({
-    required this.id,
+    required this.image,
     required this.userId,
     required this.storeName,
     required this.amount,
@@ -34,27 +35,39 @@ class Receipt {
 
   factory Receipt.fromJson(Map<String, dynamic> json) {
     return Receipt(
-      id: json['_id'],
+      image: json['_image'], // Use the correct JSON key
       userId: json['_userId'],
       storeName: json['_storeName'],
       amount: json['_amount'],
       dateTime: json['_dateTime'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "_image": image, // Use the correct JSON key
+      "_userId": userId,
+      "_storeName": storeName,
+      "_amount": amount,
+      "_dateTime": dateTime,
+    };
+  }
 }
+
 
 class Employee {
   final int userId;
   final String userName;
   final String storeName;
   final List<Receipt> receipts;
+  int receiptCount;
 
   Employee({
     required this.userId,
     required this.userName,
     required this.storeName,
     required this.receipts,
-  });
+  }) : receiptCount = receipts.length;
 
   factory Employee.fromJson(Map<String, dynamic> json) {
     var receiptsJson = json['_receipts'] as List<dynamic>;
@@ -96,6 +109,21 @@ class BusinessRegistrationRequest {
     };
   }
 }
+
+class UploadReceiptRequest {
+  final Receipt receipt;
+
+  UploadReceiptRequest({
+    required this.receipt,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      "_receipt": receipt.toJson(),
+    };
+  }
+}
+
 
 class LoginResponse
 {

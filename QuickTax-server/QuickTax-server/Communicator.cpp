@@ -81,6 +81,9 @@ void Communicator::handleRequests(SocketType clientSocket)
 			case RECEIPTLIST:
 				result = _requestHandler.getReceiptList(request, clientSocket);
 				break;
+            case GETIMG:
+                result = _requestHandler.getImg(request, clientSocket);
+                break;
 			
 			default:
 				throw std::invalid_argument("Invalid request code.");
@@ -109,7 +112,7 @@ void Communicator::handleRequests(SocketType clientSocket)
 
 Request Communicator::getData(SocketType clientSocket)
 {
-	char msg[4];
+	char msg[10];
 	int code, size;
 	std::vector<uint8_t> buffer;
 	time_t timer;
@@ -117,12 +120,14 @@ Request Communicator::getData(SocketType clientSocket)
 	recv(clientSocket, msg, 3, 0); //get code
 	msg[3] = NULL;
 	code = std::atoi(msg);
-	recv(clientSocket, msg, 4, 0); //get size of data
+	recv(clientSocket, msg, 10, 0); //get size of data
 	size = std::atoi(msg);
 
 	if (size != 0)
 	{
 		char* data = new char[size]; //create arry with this size
+        if (code == 111)
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
 		recv(clientSocket, data, size, 0);
 		//printf(data);
 		for (int i = 0; i < size; i++) //Transferring everything to vector<BITE>
@@ -139,12 +144,12 @@ Request Communicator::getData(SocketType clientSocket)
 
 void Communicator::sendData(SocketType clientSocket, std::vector<uint8_t> buffer, int code)
 {
-	char* data = new char[buffer.size() + 7];
+	char* data = new char[buffer.size() + 13];
 
 	//packet:   CODE(3bit), SIZE(4bit), DATA(size-bit)
 	std::string codeAndSize = std::to_string(code);
 
-	for (int i = 0; i < (4 - std::to_string(buffer.size()).length()); i++) //add zero to be size 4 bit
+	for (int i = 0; i < (10 - std::to_string(buffer.size()).length()); i++) //add zero to be size 10 bit
 	{
 		codeAndSize += '0';
 	}
@@ -155,13 +160,15 @@ void Communicator::sendData(SocketType clientSocket, std::vector<uint8_t> buffer
 		data[i] = codeAndSize[i];
 	}
 	int y = 0;
-	for (int i = 7; y < buffer.size(); i++) //add the msg
+	for (int i = 13; y < buffer.size(); i++) //add the msg
 	{
 		data[i] = char(buffer[y]);
 		y++;
 	}
 
-	if (send(clientSocket, data, buffer.size() + 7, 0) == SOCKET_ERROR)
+
+    
+	if (send(clientSocket, data, buffer.size() + 13, 0) == SOCKET_ERROR)
 	{
 		throw std::runtime_error(ERROR_SEND_MSG);
 	}

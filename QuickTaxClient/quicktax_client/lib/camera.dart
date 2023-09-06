@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:image_picker/image_picker.dart';
@@ -5,10 +7,10 @@ import 'package:quicktax_client/add_employee.dart';
 import 'user_type.dart';
 import 'dart:io';
 import 'receipt_history.dart';
-import 'package:flutter_tesseract_ocr/flutter_tesseract_ocr.dart';
+//import 'package:flutter_tesseract_ocr/flutter_tesseract_ocr.dart';
 import 'package:camera_avfoundation/camera_avfoundation.dart';
-
-
+import 'Communicator.dart';
+import 'receipt_history_manager.dart';
 
 class ScanScreen extends StatefulWidget {
   final UserType userType;
@@ -20,24 +22,29 @@ class ScanScreen extends StatefulWidget {
   _ScanScreenState createState() => _ScanScreenState();
 }
 
-class _ScanScreenState extends State<ScanScreen> {
+class _ScanScreenState extends State<ScanScreen> 
+{
   late CameraController _cameraController;
   late Future<void> _initializeCameraControllerFuture;
   bool _showCameraPreview = true;
-  int _currentIndex = 0;
+  int _currentIndex = 1;
   File? _capturedImage; // Variable to store the taken/uploaded image
-  late FlutterTesseractOcr _tesseractOcr;
+  //late FlutterTesseractOcr _tesseractOcr;
 
 
-  TextEditingController storeController = TextEditingController();
-  TextEditingController amountController = TextEditingController();
-  TextEditingController dateController = TextEditingController();
+  final storeController = TextEditingController();
+  final amountController = TextEditingController();
+  final dateController = TextEditingController();
+
+  String storeName = '';
+  double amount = 0.0;
+  String dateBuy = '';
 
   @override
   void initState() {
     super.initState();
     _initializeCamera();
-    _tesseractOcr = FlutterTesseractOcr();
+    //_tesseractOcr = FlutterTesseractOcr();
 
   }
 
@@ -111,6 +118,7 @@ class _ScanScreenState extends State<ScanScreen> {
   }
 
  Future<void> _processImage(String imagePath) async {
+  /*
   try
     {
       final extractedText = await FlutterTesseractOcr.extractText(imagePath, language: 'eng');
@@ -164,6 +172,7 @@ class _ScanScreenState extends State<ScanScreen> {
         },
       );
     }
+    */
     // Show extracted information using a dialog
     // ignore: use_build_context_synchronously
     showDialog(
@@ -214,9 +223,126 @@ class _ScanScreenState extends State<ScanScreen> {
 
 
 
-  void _savePhoto() {
-    // Implement logic to save the photo (e.g., save it to storage)
-    // After saving, you can show a confirmation message to the user if needed
+  void _savePhoto()
+  {
+    final communicator = Communicator();
+    storeName = storeController.text;
+    amount = double.parse(amountController.text);
+    dateBuy = dateController.text;
+
+    if (_capturedImage != null)
+    {
+      final receipt = Receipt(
+        image: _capturedImage != null ? base64Encode(File(_capturedImage!.path).readAsBytesSync()) : '',
+        userId: widget.userType.userId,
+        storeName: storeName,
+        amount: amount,
+        dateTime: dateBuy,
+      );
+
+      final requestData = UploadReceiptRequest
+      (
+        receipt: receipt,
+      );
+      
+      String msg = "102" + jsonEncode(requestData.toJson()).length.toString().padLeft(10, '0') + jsonEncode(requestData.toJson());    
+      
+      communicator.sendRequestToServer(msg).then((response)
+      {
+        final responseCode = response["responseCode"];
+        final responseMessage = response["responseMessage"];
+
+        if (responseCode == 404)
+        {
+          Map<String, String> errMsg = Map<String, String>.from(json.decode(responseMessage));
+          // ignore: use_build_context_synchronously
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: const Text('Error'),
+                content: Text(errMsg['_message']!),
+                actions: <Widget>[
+                  TextButton(
+                    child: const Text('OK'),
+                    onPressed: () {
+                      Navigator.of(context).pop(); // Close the dialog
+                    },
+                  ),
+                ],
+              );
+            },
+          );
+        }
+        else if(responseCode == 202)
+        {
+          Map<String, int> res = Map<String, int>.from(json.decode(responseMessage));
+          if (res['_status'] == 400)
+          {
+            // ignore: use_build_context_synchronously
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: const Text('success'),
+                  content: Text("Receipt has been uploaded to the server"),
+                  actions: <Widget>[
+                    TextButton(
+                      child: const Text('OK'),
+                      onPressed: () {
+                        Navigator.of(context).pop(); // Close the dialog
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
+          }
+          else
+          {
+            // ignore: use_build_context_synchronously
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: const Text('Error'),
+                  content: Text("Receipt hasn't been uploaded to the server"),
+                  actions: <Widget>[
+                    TextButton(
+                      child: const Text('OK'),
+                      onPressed: () {
+                        Navigator.of(context).pop(); // Close the dialog
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
+          }
+        }
+      });
+    }
+    else
+    {
+      // Handle the case where no image is captured
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: const Text('Error'),
+            content: Text('No image captured.'),
+            actions: <Widget>[
+              TextButton(
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop(); // Close the dialog
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
   }
 
   void _retakePhoto() {
@@ -327,14 +453,20 @@ class _ScanScreenState extends State<ScanScreen> {
           // Define the logic for handling navigation when the user taps on each item
           // index 0: Scan, index 1: Receipt History, index 2: Profile Settings
           switch (index) {
-            case 1:
+            case 0:
               // Navigate to the Receipt History
               Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ReceiptHistoryScreen(userType: widget.userType),
-                      ),
-                    );
+                context,
+                MaterialPageRoute(
+                  builder: (context) {
+                    if (widget.userType.type == UserTypeValue.Manager) {
+                      return ReceiptHistoryManagerScreen(userType: widget.userType);
+                    } else {
+                      return ReceiptHistoryScreen(userType: widget.userType);
+                    }
+                  },
+                ),
+              );
               break;
             case 2:
               // Navigate to the Profile Settings screen
@@ -353,20 +485,22 @@ class _ScanScreenState extends State<ScanScreen> {
             // Add more cases if you have additional tabs
           }
         },
+        selectedItemColor: Colors.blue, // Set your custom color for selected item here
+        unselectedItemColor: Colors.grey,
         items: [
-          const BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt),
-            label: 'Scan',
-          ),
           const BottomNavigationBarItem(
             icon: Icon(Icons.history),
             label: 'Receipt History',
           ),
           const BottomNavigationBarItem(
+            icon: Icon(Icons.camera_alt),
+            label: 'Scan',
+          ),
+          const BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Profile Settings',
           ),
-          if (widget.userType.type == UserTypeValue.Manager) // Show this item only for managers
+          if (widget.userType.type == UserTypeValue.Manager)
             const BottomNavigationBarItem(
               icon: Icon(Icons.person_add),
               label: 'Additional User',

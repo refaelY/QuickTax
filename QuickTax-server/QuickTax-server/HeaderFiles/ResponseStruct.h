@@ -11,6 +11,7 @@ enum ResponseCode
 	DELETERECEIPTRESPONSE = 205,
 	REMOVEEMPLOYEERESPONS = 208,
 	GETRECEIPTLISTRESPONSE = 210,
+    GETIMGRESPONSE = 211,
 	ADDEMPLOYEERESPONSE = 207,
 
 	ERRORRESPONSE = 404,
@@ -74,4 +75,7 @@ struct LogoutResponse
 	unsigned int _status;
 };
 
-
+struct GetImgResponse
+{
+    std::string _img;
+};

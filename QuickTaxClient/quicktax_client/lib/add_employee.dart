@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'user_type.dart'; 
 import 'camera.dart';
 import 'receipt_history.dart';
+import 'receipt_history_manager.dart';
 
 class AddEmployeePage extends StatefulWidget {
   final UserType userType;
@@ -41,10 +42,10 @@ class _AddEmployeePage extends State<AddEmployeePage>
           // Transparent Logo at the Center
           Center(
             child: Opacity(
-              opacity: 0.6,
+              opacity: 0.4,
               child: Image.asset(
                 'assets/images/logo.png',
-                height: 200,
+                height: 400,
               ),
             ),
           ),
@@ -93,7 +94,7 @@ class _AddEmployeePage extends State<AddEmployeePage>
                         "_userId": widget.userType.userId,
                       };
 
-                      String msg = "107" + jsonEncode(requestData).length.toString().padLeft(4, '0') + jsonEncode(requestData);
+                      String msg = "107" + jsonEncode(requestData).length.toString().padLeft(10, '0') + jsonEncode(requestData);
                       
                       communicator.sendRequestToServer(msg).then((response) 
                       {
@@ -192,27 +193,20 @@ class _AddEmployeePage extends State<AddEmployeePage>
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.3),
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20),
-                ),
+                borderRadius: BorderRadius.circular(20),
               ),
               child: SingleChildScrollView(
                 child: FutureBuilder<List<Employee>>(
-                  // Use fetchEmployeeData() to retrieve employee data
                   future: fetchEmployeeData(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return const Center(child: CircularProgressIndicator());
+                      return Center(child: CircularProgressIndicator());
                     } else if (snapshot.hasError) {
                       return Center(child: Text('Error: ${snapshot.error}'));
                     } else if (snapshot.hasData) {
-                      // Display your custom widget here, passing the employee list
                       return YourCustomEmployeeWidget(employeeList: snapshot.data!);
                     } else {
-                      return const Center(child: Text('No data available.'));
+                      return Center(child: Text('No data available.'));
                     }
                   },
                 ),
@@ -227,22 +221,22 @@ class _AddEmployeePage extends State<AddEmployeePage>
             onTap: (index) {
               // Define the logic for handling navigation when the user taps on each item
               // index 0: Scan, index 1: Receipt History, index 2: Profile Settings
-              switch (index) {
+              switch (index) {   
                 case 0:
+                  // Navigate to the Receipt History
                   Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ScanScreen(userType: widget.userType),
+                            builder: (context) => ReceiptHistoryManagerScreen(userType: widget.userType),
                           ),
                         );
                   break;
 
                 case 1:
-                  // Navigate to the Receipt History
                   Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ReceiptHistoryScreen(userType: widget.userType),
+                            builder: (context) => ScanScreen(userType: widget.userType),
                           ),
                         );
                   break;
@@ -253,20 +247,22 @@ class _AddEmployeePage extends State<AddEmployeePage>
 
               }
             },
+            selectedItemColor: Colors.blue, // Set your custom color for selected item here
+            unselectedItemColor: Colors.grey,
             items: [
-              const BottomNavigationBarItem(
-                icon: Icon(Icons.camera_alt),
-                label: 'Scan',
-              ),
               const BottomNavigationBarItem(
                 icon: Icon(Icons.history),
                 label: 'Receipt History',
               ),
               const BottomNavigationBarItem(
+                icon: Icon(Icons.camera_alt),
+                label: 'Scan',
+              ),
+              const BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
                 label: 'Profile Settings',
               ),
-              if (widget.userType.type == UserTypeValue.Manager) // Show this item only for managers
+              if (widget.userType.type == UserTypeValue.Manager)
                 const BottomNavigationBarItem(
                   icon: Icon(Icons.person_add),
                   label: 'Additional User',
@@ -284,26 +280,31 @@ class _AddEmployeePage extends State<AddEmployeePage>
       "_userId": widget.userType.userId,
     };
 
-    String msg = "104" + jsonEncode(requestData).length.toString().padLeft(4, '0') + jsonEncode(requestData);
+    String msg = "104" + jsonEncode(requestData).length.toString().padLeft(10, '0') + jsonEncode(requestData);
 
     return communicator.sendRequestToServer(msg).then((response) {
       final responseCode = response["responseCode"];
       final responseMessage = response["responseMessage"];
 
-      if (responseCode == 404) {
+      if (responseCode == 404)
+      {
         throw Exception("Error fetching employee data");
-      } else if (responseCode == 204) {
+      } 
+      else if (responseCode == 204) 
+      {
         String modifiedResponseMessage = responseMessage.replaceAll("\"_receipts\":null", "\"_receipts\":[]");
         final jsonResponse = jsonDecode(modifiedResponseMessage);
         List<Employee> employeeList = [];
 
         for (var employeeJson in jsonResponse) {
           Employee employee = Employee.fromJson(employeeJson);
+          employee.receiptCount = employee.receipts.length;
           employeeList.add(employee);
         }
 
         return employeeList; // Return the employee list here
-      } else {
+      } 
+      else {
         throw Exception("Unknown response code");
       }
     });
@@ -327,13 +328,15 @@ class YourCustomEmployeeWidget extends StatelessWidget {
             padding: const EdgeInsets.symmetric(vertical: 8.0),
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.grey),
-                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: Colors.black),
+                borderRadius: BorderRadius.circular(20),
               ),
               child: ListTile(
-                title: Text(employee.userName),
-                subtitle: Text(employee.storeName),
+                title: Text("Username: " + employee.userName),
+                subtitle: Text("Store name: " + employee.storeName),
+                trailing: Text("Receipt Count: " + (employee.receiptCount ?? 0).toString()),
               ),
+
             ),
           ),
       ],

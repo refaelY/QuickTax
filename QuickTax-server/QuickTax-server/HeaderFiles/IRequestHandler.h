@@ -8,6 +8,10 @@
 #include "JsonResponsePacketSerializer.h"
 #include "IDataBase.h"
 
+
+//namespace asio = boost::asio;
+//namespace fs = boost::filesystem;
+
 #ifdef _WIN32
     #include <WinSock2.h>
     #pragma comment(lib, "ws2_32.lib")
@@ -27,6 +31,8 @@
 #define EMPLOYEE 1
 #define DIRECTOR 2
 
+
+
 class IRequestHandler
 {
 private:
@@ -44,4 +50,5 @@ public:
     RequestResult deleteReceipt(Request request, SocketType socket);
     RequestResult removeEmployee(Request request, SocketType socket);
     RequestResult getReceiptList(Request request, SocketType socket);
+    RequestResult getImg(Request request, SocketType socket);
 };

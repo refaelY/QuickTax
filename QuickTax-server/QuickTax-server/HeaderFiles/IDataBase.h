@@ -24,6 +24,8 @@ extern "C" {
 //#include <io.h>
 #include <string.h>
 #include <string>
+#include "base64.hpp"
+
 
 using namespace std;
 
@@ -33,6 +35,7 @@ class IDataBase
 
 private:
 	sqlite3* db;
+    
     static int doesItemExistsCallback(void* data, int argc, char** argv, char** azColName);
 
 	static int getReceiptListCallback(void* data, int argc, char** argv, char** azColName);
@@ -59,10 +62,12 @@ public:
 	std::string getBusinessName(int userId);
     std::list<Receipt> getReceiptList(GetReceiptListRequest);
     std::list<Employee> getEmployeeList(GetEmployeeListRequest);
-
+    int getUniqueReceiptId();
+    std::string getImg(const std::string& imagePath);
+    
 	void createBusiness(BusinessRegistrationRequest request);
 	void addEmployee(AddEmployeeRequest request);
-	void uploadReceipt(UploadReceiptRequest request);
+    std::string uploadReceipt(UploadReceiptRequest request);
 	void deleteReceipt(DeleteReceiptRequest);
 	void removeEmployee(RemoveEmployeeRequest);
 

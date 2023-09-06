@@ -27,4 +27,5 @@ public:
 	static std::vector<std::uint8_t> serializeResponse(const DeleteReceiptResponse& packet);
 	static std::vector<std::uint8_t> serializeResponse(const RemoveEmployeeResponse& packet);
 	static std::vector<std::uint8_t> serializeResponse(const GetReceiptListResponse& packet);
+    static std::vector<std::uint8_t> serializeResponse(const GetImgResponse& packet);
 };
