@@ -20,6 +20,29 @@ class _MenuPageState extends State<MenuPage> {
   int _currentIndex = 0;
   late PageController _pageController;
 
+  // Descriptions for each button
+  final List<String> buttonDescriptions = [
+    '''Quickly review and manage your past transactions and receipts.\n
+Access digital copies of receipts, search for specific transactions,\n
+and ensure you have all the records needed for tax compliance.\n
+Stay organized and in control of your financial history.''',
+    '''Effortlessly capture and digitize paper receipts.\n
+Simply snap a photo of your paper receipts,\n
+and let QuickTax convert them into digital records.\n
+This feature streamlines the process of managing your expenses\n
+and ensures that all your receipts are securely stored and ready for tax time.''',
+    '''Tailor your QuickTax experience to your preferences.\n
+Access and update your personal information,\n
+including your username and password, to ensure that your account\n
+stays secure and up to date. Customize your profile settings to match your needs,\n
+making your QuickTax experience as efficient and personalized as possible''',
+    '''Empower your team by adding new users to your business profile.\n
+Grant access to key employees, allowing them to contribute to your\n
+QuickTax experience. Seamlessly expand your team's capabilities and\n
+streamline tax-related tasks by inviting additional users to collaborate\n
+on your QuickTax account.''',
+  ];
+
   @override
   void initState() {
     super.initState();
@@ -54,6 +77,19 @@ class _MenuPageState extends State<MenuPage> {
               ),
             ),
           ),
+          // Fixed Description at the Top
+          Positioned(
+            top: 100, // Adjust the top spacing as needed
+            left: 20, // Adjust the left spacing as needed
+            child: Text(
+              buttonDescriptions[_currentIndex], // Show the description based on the selected button
+              style: TextStyle(
+                fontSize: 12,
+                color: const Color.fromARGB(255, 0, 0, 0), // Set your preferred text color
+              ),
+            ),
+          ),
+
           // Rest of the Content
           Positioned.fill(
             child: PageView(

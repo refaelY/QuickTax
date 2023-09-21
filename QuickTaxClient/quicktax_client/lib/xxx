@@ -1,53 +1,209 @@
-final jsonResponse = jsonDecode(responseMessage);
-List<Employee> employeeList = [];
+import 'package:flutter/material.dart';
+import 'camera.dart';
+import 'profile_setting.dart';
+import 'receipt_history.dart';
+import 'add_employee.dart';
+import 'user_type.dart';
+import 'receipt_history_manager.dart';
 
-for (var employeeJson in jsonResponse) {
-  Employee employee = Employee.fromJson(employeeJson);
+class MenuPage extends StatefulWidget {
+  final UserType userType;
 
-  List<Receipt> receiptList = [];
-  for (var receipt in employee.receipts) {
-    Map<String, dynamic> requestData = {
-      "_pathImg": receipt.image, // This is the path of the img
-    };
+  MenuPage({required this.userType});
 
-    String imgRequestMsg = "111" +
-        jsonEncode(requestData).length.toString().padLeft(10, '0') +
-        jsonEncode(requestData);
-
-    final imgResponse = await communicator.sendRequestToServer(imgRequestMsg);
-
-    final imgResponseCode = imgResponse["responseCode"];
-    final imgResponseMessage = imgResponse["responseMessage"];
-
-    if (imgResponseCode == 404) {
-      throw Exception("Error fetching receipt image");
-    } else if (imgResponseCode == 211) {
-      try {
-        Map<String, String> imgRes =
-            Map<String, String>.from(json.decode(imgResponseMessage));
-        // Create a new Receipt object instead of modifying the existing one
-        Receipt updatedReceipt = Receipt(
-          image: imgRes['_img'] ?? ' ', // This is the base64 img
-          userId: receipt.userId,
-          storeName: receipt.storeName,
-          amount: receipt.amount,
-          dateTime: receipt.dateTime,
-        );
-        receiptList.add(updatedReceipt);
-      } catch (e) {
-        // Handle non-image response scenario here
-      }
-    }
-  }
-  // Assign the updated receipt list to the employee
-  employee = Employee(
-    userId: employee.userId,
-    userName: employee.userName,
-    storeName: employee.storeName,
-    receipts: receiptList,
-  );
-  employee.receiptCount = employee.receipts.length;
-  employeeList.add(employee);
+  @override
+  _MenuPageState createState() => _MenuPageState();
 }
 
-return employeeList;
+class _MenuPageState extends State<MenuPage> {
+  int _currentIndex = 0;
+  late PageController _pageController;
+
+  // Descriptions for each button
+  final List<String> buttonDescriptions = [
+    'View Receipt History',
+    'Scan Receipt',
+    'Profile Settings',
+    'Add Additional User',
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    _pageController = PageController(initialPage: _currentIndex);
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: [
+          // Background Image
+          Image.asset(
+            'assets/images/background2.jpg',
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+          ),
+          // Transparent Logo at the Center
+          Center(
+            child: Opacity(
+              opacity: 0.6, // Set the desired transparency value here (0.0 to 1.0)
+              child: Image.asset(
+                'assets/images/logo.png', // Replace with your logo image path
+                height: 400, // Adjust the height as needed
+              ),
+            ),
+          ),
+          // Fixed Description at the Top
+          Positioned(
+            top: 20, // Adjust the top spacing as needed
+            left: 20, // Adjust the left spacing as needed
+            child: Text(
+              buttonDescriptions[_currentIndex], // Show the description based on the selected button
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.white, // Set your preferred text color
+              ),
+            ),
+          ),
+          // Rest of the Content
+          Positioned.fill(
+            child: PageView(
+              controller: _pageController,
+              onPageChanged: (index) {
+                setState(() {
+                  _currentIndex = index;
+                });
+              },
+              children: [
+                // Replace the PlaceholderWidgets with your actual screens/pages for each button action
+                PlaceholderWidget(
+                  'Receipt History',
+                  Icons.history,
+                  () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          if (widget.userType.type == UserTypeValue.Manager) {
+                            return ReceiptHistoryManagerScreen(userType: widget.userType);
+                          } else {
+                            return ReceiptHistoryScreen(userType: widget.userType);
+                          }
+                        },
+                      ),
+                    );
+                  },
+                ),
+                PlaceholderWidget(
+                  'Scan',
+                  Icons.camera_alt,
+                  () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ScanScreen(userType: widget.userType),
+                      ),
+                    );
+                  },
+                ),
+                PlaceholderWidget(
+                  'Profile Settings',
+                  Icons.settings,
+                  () {
+                    // Handle navigation here for Profile Settings
+                  },
+                ),
+                if (widget.userType.type == UserTypeValue.Manager)
+                  PlaceholderWidget(
+                    'Additional User',
+                    Icons.person_add,
+                    () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AddEmployeePage(userType: widget.userType),
+                        ),
+                      );
+                    },
+                  ),
+              ],
+            ),
+          ),
+          // Bottom Navigation Bar
+          Positioned(
+            left: 0,
+            right: 0,
+            bottom: 0,
+            child: BottomNavigationBar(
+              currentIndex: _currentIndex,
+              onTap: (index) {
+                setState(() {
+                  _currentIndex = index;
+                  _pageController.animateToPage(
+                    _currentIndex,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                });
+              },
+              selectedItemColor: Colors.blue, // Set your custom color for selected item here
+              unselectedItemColor: Colors.grey,
+              items: [
+                const BottomNavigationBarItem(
+                  icon: Icon(Icons.history),
+                  label: 'Receipt History',
+                ),
+                const BottomNavigationBarItem(
+                  icon: Icon(Icons.camera_alt),
+                  label: 'Scan',
+                ),
+                const BottomNavigationBarItem(
+                  icon: Icon(Icons.settings),
+                  label: 'Profile Settings',
+                ),
+                if (widget.userType.type == UserTypeValue.Manager)
+                  const BottomNavigationBarItem(
+                    icon: Icon(Icons.person_add),
+                    label: 'Additional User',
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class PlaceholderWidget extends StatelessWidget {
+  final String title;
+  final IconData icon;
+  final VoidCallback onPressed; // Added this callback parameter
+
+  PlaceholderWidget(this.title, this.icon, this.onPressed); // Updated constructor
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector( // Wrap with GestureDetector to handle tap
+      onTap: onPressed, // Call the provided onPressed function when tapped
+      child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(icon, size: 60),
+            const SizedBox(height: 16),
+            Text(title, style: const TextStyle(fontSize: 18)),
+          ],
+        ),
+      ),
+    );
+  }
+}
